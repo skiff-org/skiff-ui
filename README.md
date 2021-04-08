@@ -8,7 +8,7 @@
 
 ## Documentation
 
-Our documentation and examples can be found at [Skiff UI](ui.skiff.org).
+Our documentation and examples can be found at [Skiff UI](https://ui.skiff.org).
 
 ## Installation
 
