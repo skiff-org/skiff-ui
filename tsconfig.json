@@ -1,0 +1,31 @@
+{
+
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "pretty": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "esnext",
+    "lib": ["es6", "es2015", "dom", "es2017"],
+    "target": "es5",
+    "jsx": "react",
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "esModuleInterop": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+  },
+  "include": [
+    "./src/**/**/*",
+    "./custom.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

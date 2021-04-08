@@ -1,0 +1,119 @@
+// * IMPORTS
+@mixin square($height) {
+  height: $height;
+  width: $height;
+}
+
+// * VARIABLES
+
+$h-offset: 3px;
+$v-offset: 2px;
+
+$sizes: (
+  // avatar-size, font-size, badge-size
+  'xsmall': (14px, 14px, 10px),
+  'small': (25px, 17px, 10px),
+  'normal': (32px, 20px, 10px),
+  'large': (43px, 25px, 17px),
+  'xlarge': (72px, 43px, 25px)
+);
+
+$types: (
+  // background-radius
+  'round': 50%,
+  'square': 4px
+);
+
+$cutout-positions: (
+  // h-edge, v-edge
+  'tl': (top, left),
+  'tr': (top, right),
+  'bl': (bottom, left),
+  'br': (bottom, right)
+);
+
+// * MIXINS
+
+@mixin cutout($diameter, $h-edge, $h-offset, $v-edge, $v-offset) {
+  mask: radial-gradient(
+    circle at $h-edge ($diameter / 2 - $h-offset) $v-edge ($diameter / 2 - $v-offset),
+    transparent ($diameter / 2 + 3),
+    white ($diameter / 2 + 3)
+  );
+}
+
+@mixin size($avatar-size, $font-size, $badge-size) {
+  @include square($avatar-size);
+
+  .avatar-name {
+    font-size: $font-size;
+    line-height: $font-size;
+  }
+
+  .avatar-badge {
+    @include square($badge-size);
+  }
+
+  // apply background cutout based on pos
+  @each $pos, $pos-values in $cutout-positions {
+    $h-edge: nth($pos-values, 1);
+    $v-edge: nth($pos-values, 2);
+
+    &.online.#{$pos} {
+      .avatar-background {
+        @include cutout($badge-size, $h-edge, $h-offset, $v-edge, $v-offset);
+      }
+
+      .avatar-badge {
+        #{$h-edge}: -$h-offset;
+        #{$v-edge}: -$v-offset;
+      }
+    } 
+  }
+}
+
+// * STATIC STYLES
+
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Mulish', sans-serif;
+}
+
+.avatar-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-name {
+  font-weight: 700;
+  text-transform: capitalize;
+  z-index: 2;
+}
+
+.avatar-badge {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--ncl-positive-2);
+}
+
+// * DYNAMIC STYLES
+
+// apply size-specific styles
+@each $size, $size-values in $sizes {
+  .avatar.#{$size} {
+    @include size($size-values...);
+  }
+}
+
+// apply type specific styles
+@each $type, $background-radius in $types {
+  .avatar.#{$type} .avatar-background {
+    border-radius: $background-radius;
+  }
+}
