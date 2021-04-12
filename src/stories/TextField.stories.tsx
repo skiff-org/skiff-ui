@@ -5,10 +5,10 @@ import { TextField, TextFieldProps } from './TextField';
 
 export default {
   title: 'Skiff/Text Field',
-  component: TextField,
+  component: TextField
 } as Meta;
 
-const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
+const Template: Story<TextFieldProps> = args => <TextField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

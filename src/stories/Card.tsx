@@ -38,34 +38,34 @@ export const Card: React.FC<CardProps> = ({
   tagsToIgnoreClick,
   style,
   className,
-  props,
+  props
 }) => {
-  const active = onClick ?? null;
   const leftTypes = {
     default: 'none',
     bannerLeft: '4px solid #000000',
-    bannerTop: 'none',
+    bannerTop: 'none'
   };
   const topTypes = {
     default: 'none',
     bannerLeft: 'none',
-    bannerTop: '4px solid #000000',
+    bannerTop: '4px solid #000000'
   };
 
   const padTypes = {
     enabled: '24px',
-    disabled: '0',
+    disabled: '0'
   };
 
   const styles = {
-    width: width,
-    height: height,
+    width,
+    height,
     borderLeft: leftTypes[type],
     borderTop: topTypes[type],
     borderRadius: '27px',
+    outline: 'none',
     backgroundColor: '#ffffff',
     boxShadow: '0 0 25px 0 rgba(0, 0, 0, 0.09)',
-    padding: active ? `${padTypes[padding]}` : `${padTypes[padding]}`,
+    padding: `${padTypes[padding]}`
   };
 
   // Handle outside clicks
@@ -76,7 +76,7 @@ export const Card: React.FC<CardProps> = ({
     const targetInIgnore = tagsToIgnoreClick?.includes(targetElement.nodeName.toLowerCase()) || false;
     if (setShowCard) setShowCard(targetInWrapper || targetInIgnore);
   };
- 
+
   if (handleOutsideClick) {
     useEffect(() => {
       document.addEventListener('click', handleClickOutside);
@@ -91,9 +91,12 @@ export const Card: React.FC<CardProps> = ({
       className={className}
       ref={wrapperRef}
       onClick={onClick}
+      onKeyPress={() => {}}
       onMouseLeave={onMouseLeave}
       style={{ ...styles, ...style }}
       {...props}
+      tabIndex={0}
+      role="button"
     >
       {children}
     </div>

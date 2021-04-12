@@ -5,10 +5,10 @@ import { CodeInput, CodeInputProps } from './CodeInput';
 
 export default {
   title: 'Skiff/Code Input',
-  component: CodeInput,
+  component: CodeInput
 } as Meta;
 
-const Template: Story<CodeInputProps> = (args) => <CodeInput {...args} />;
+const Template: Story<CodeInputProps> = args => <CodeInput {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

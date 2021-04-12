@@ -36,8 +36,6 @@ export interface TextFieldProps {
   style?: object;
   /** Textfield endAdornment component */
   endAdornment?: React.ReactNode;
-  /** Textfield class name */
-  className?: string;
   /** Textfield autofocus input  */
   autoFocus?: boolean;
   /** Textfield use multi-line text area  */
@@ -47,26 +45,25 @@ export interface TextFieldProps {
 }
 
 export const TextField: React.FC<TextFieldProps> = ({
-  type='default', 
-  width='200px', 
-  placeholder='', 
-  label='',
+  type = 'default',
+  width = '200px',
+  placeholder = '',
+  label = '',
   labelButton,
   value,
   hint,
-  hintDirection="bottom",
-  style={},
+  hintDirection = 'bottom',
+  style = {},
   endAdornment,
-  className,
   autoFocus,
   useTextArea,
   innerRef,
-  onChange=() => {},
-  onKeyPress=() => {},
-  onKeyDown=() => {},
-  onBlur=() => {},
-  onFocus=() => {},
-  onPaste=() => {}
+  onChange = () => {},
+  onKeyPress = () => {},
+  onKeyDown = () => {},
+  onBlur = () => {},
+  onFocus = () => {},
+  onPaste = () => {}
 }) => {
   const types = {
     default:
@@ -76,7 +73,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         border: '2px solid #d8d8d8',
         borderRadius: '8px',
         variant: 'text',
-        height: '0px',
+        height: '0px'
       },
     password:
       {
@@ -85,7 +82,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         border: '2px solid #d8d8d8',
         borderRadius: '8px',
         variant: 'password',
-        height: '0px',
+        height: '0px'
       },
     send:
       {
@@ -94,77 +91,83 @@ export const TextField: React.FC<TextFieldProps> = ({
         border: 'none',
         borderRadius: '50px',
         variant: 'text',
-        height: '16px',
-      },
+        height: '16px'
+      }
   };
 
   const styles = {
-    backgroundColor: types[type]['backgroundColor'],
-    border: types[type]['border'],
-    color: types[type]['color'],
+    backgroundColor: types[type].backgroundColor,
+    border: types[type].border,
+    color: types[type].color,
     marginLeft: 0,
     fontSize: '1em',
     lineHeight: '1.2em',
     fontFamily: 'Mulish, sans-serif',
     padding: '18px',
-    borderRadius:  types[type]['borderRadius'],
-    height: types[type]['height'],
-    textAlign: 'left' as 'left',
-    verticalAlign: 'middle' as 'middle',
+    borderRadius: types[type].borderRadius,
+    height: types[type].height,
+    textAlign: 'left' as const,
+    verticalAlign: 'middle' as const,
     marginTop: 10,
-    width: width,
-    outline: 'none',
+    width,
+    outline: 'none'
   };
 
   return (
-    <div style={{width:`${width}`}}>
-      <div style={{display: 'inline-flex', width: '100%'}}>
-      <div style={{fontFamily: 'Mulish, sans-serif'}}>{label}</div>
-      {labelButton}
-      {hint && (
+    <div style={{ width: `${width}` }}>
+      <div style={{ display: 'inline-flex', width: '100%' }}>
+        <div style={{ fontFamily: 'Mulish, sans-serif' }}>{label}</div>
+        {labelButton}
+        {hint && (
         <Tooltip
           description={hint}
           direction={hintDirection}
         >
-          <img style={{width: '16px', height: '16px'}} src={Info}></img>
+          <img alt="info" style={{ width: '16px', height: '16px' }} src={Info} />
         </Tooltip>
-      )}
+        )}
       </div>
       {/* TODO: consolidate to always textarea, or always input (or separate
         into two components), current impl cannot be properly typed. (#1588) */}
-      {useTextArea ?
-        <textarea 
-          autoFocus={autoFocus}
-          style={{...styles, ...style, height: '70px', resize: 'none', padding: '10px', fontSize: '0.9em', backgroundColor: '#f9f9f9'}} 
-          className="textInput"
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          onKeyPress={onKeyPress}
-          onKeyDown={onKeyDown}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          onPaste={onPaste}
-          ref={innerRef as React.Ref<HTMLTextAreaElement>}
-        />
-        : 
-        <input 
-          autoFocus={autoFocus}
-          type={types[type]['variant']} 
-          style={{...styles, ...style}} 
-          className="textInput"
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          onKeyPress={onKeyPress}
-          onKeyDown={onKeyDown}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          onPaste={onPaste}
-          ref={innerRef as React.Ref<HTMLInputElement>}
-        />
-      }
+      {useTextArea
+        ? (
+          <textarea
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={autoFocus}
+            style={{
+              ...styles, ...style, height: '70px', resize: 'none', padding: '10px', fontSize: '0.9em', backgroundColor: '#f9f9f9'
+            }}
+            className="textInput"
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            onKeyPress={onKeyPress}
+            onKeyDown={onKeyDown}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            onPaste={onPaste}
+            ref={innerRef as React.Ref<HTMLTextAreaElement>}
+          />
+        )
+        : (
+          <input
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus={autoFocus}
+            type={types[type].variant}
+            style={{ ...styles, ...style }}
+            className="textInput"
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            onKeyPress={onKeyPress}
+            onKeyDown={onKeyDown}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            onPaste={onPaste}
+            ref={innerRef as React.Ref<HTMLInputElement>}
+          />
+        )}
       {endAdornment}
     </div>
   );
-}
+};

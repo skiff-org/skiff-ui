@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './Tooltip.scss';
 
 export interface TooltipProps {
-	/** The description to display in the Tooltip */
-	description: string;
+  /** The description to display in the Tooltip */
+  description: string;
   /** Tooltip child component */
   children?: React.ReactNode;
   /** Tooltip direction */
@@ -11,27 +11,27 @@ export interface TooltipProps {
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({
-	description,
+  description,
   children,
-  direction='top'
+  direction = 'top'
 }) => {
-	const [active, setActive] = useState(false);
+  const [active, setActive] = useState(false);
 
-	return (
-		<div
+  return (
+    <div
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
-      className={'nwtooltip'}
+      className="nwtooltip"
       style={{
         position: 'relative',
         fontSize: 0,
-        marginLeft: '5px',
+        marginLeft: '5px'
       }}
     >
       {children}
       <div className={`nwtooltip-tip ${direction}`}>
         {description}
       </div>
-		</div>
-	);
-}
+    </div>
+  );
+};
