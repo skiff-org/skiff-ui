@@ -2,9 +2,9 @@ name: Test
 
 on:
   push:
-    branches: [ main, jasong/develop]
+    branches: [ main, develop]
   pull_request:
-    branches: [ main, jasong/develop]
+    branches: [ main, develop]
 
 jobs:
   dependencies:
