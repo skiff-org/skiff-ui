@@ -29,6 +29,7 @@
     "@emotion/core": "^11.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "audit-ci": "^3.2.0",
     "emoji-mart": "^3.0.0",
     "emotion": "^11.0.0",
     "eslint": "^7.24.0",
@@ -84,5 +85,9 @@
     "webpack": "4.46.0",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "^3.11.0"
+  },
+  "resolutions": {
+    "qs": "6.3.2",
+    "minimist": "1.2.3"
   }
 }
