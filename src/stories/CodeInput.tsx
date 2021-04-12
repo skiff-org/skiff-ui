@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { TextField } from './TextField';
 
-import './CodeInput.scss'
+import './CodeInput.scss';
 
 export type CodeInputProps = {
   /** Expected length of code */
@@ -33,17 +33,17 @@ export function CodeInput(props: CodeInputProps) {
 
   function padEnd(
     arr: Array<string>,
-    targetLength: number, 
-    padString: string = '') {
-      return Object.assign(
-      new Array(targetLength).fill(padString), arr);
+    targetLength: number,
+    padString = ''
+  ) {
+    return Object.assign(
+      new Array(targetLength).fill(padString), arr
+    );
   }
 
-  const codeValues = padEnd(value.split(''), codeLength)
+  const codeValues = padEnd(value.split(''), codeLength);
 
-  const isValidDigit = (newVal: string): boolean => {
-    return !Number.isNaN(Number(newVal)) && newVal.length == 1;
-  }
+  const isValidDigit = (newVal: string): boolean => !Number.isNaN(Number(newVal)) && newVal.length === 1;
 
   // Focuses the input box given by index
   const setCursor = (index: number) => {
@@ -51,16 +51,16 @@ export function CodeInput(props: CodeInputProps) {
   };
 
   const handleBackspace = (newValues: string[], index: number) => {
-    if (index === 0){ // can't go beyond first entry
+    if (index === 0) { // can't go beyond first entry
       return;
     } // clear existing values
-    if (newValues[index] !== ''){
+    if (newValues[index] !== '') {
       newValues[index] = '';
     } else { // go back an entry if already cleared
       newValues[index - 1] = '';
       setCursor(index - 1);
     }
-  }
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent, index: number) => {
     const newValues = [...codeValues];
@@ -83,21 +83,17 @@ export function CodeInput(props: CodeInputProps) {
   const getPastedValues = (e: React.ClipboardEvent) => {
     const pastedValues = e.clipboardData.getData('text/plain').split('');
     if (numeric) {
-      return pastedValues.filter(char => {
-        return isValidDigit(char);
-      });
+      return pastedValues.filter(char => isValidDigit(char));
     }
     return pastedValues;
-  }
+  };
 
   const parsePastedValues = (pastedValues: string[], index: number) => {
     const newValues = [...codeValues];
     newValues.splice(index, pastedValues.length, ...pastedValues);
-    const validValues = newValues.filter(char => {
-      return !!char;
-    });
-    return validValues.slice(0, codeLength).join('')
-  }
+    const validValues = newValues.filter(char => !!char);
+    return validValues.slice(0, codeLength).join('');
+  };
 
   const handlePaste = (e: React.ClipboardEvent, index: number) => {
     const pastedValues = getPastedValues(e);
@@ -108,7 +104,7 @@ export function CodeInput(props: CodeInputProps) {
     // Move cursor to next box, or end
     const newIndex = Math.min(parsedValues.length, codeLength - 1);
     setCursor(newIndex);
-  }
+  };
 
   const fields = codeValues.map((value: string, index: number) => (
     <TextField
@@ -116,7 +112,7 @@ export function CodeInput(props: CodeInputProps) {
       // eslint-disable-next-line react/no-array-index-key
       key={index}
       autoFocus={index === 0}
-      width={index + 1 === codeLength ? "auto": "200px"}
+      width={index + 1 === codeLength ? 'auto' : '200px'}
       style={{
         fontSize,
         width: size,

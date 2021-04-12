@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react';
 import { Card } from './Card';
 
 export interface DropdownProps {
@@ -19,14 +19,13 @@ export interface DropdownProps {
 
 export function Dropdown({
   names,
-  icons, 
-  onClicks, 
-  style, 
-  classNames=[],
-  className='',
+  icons,
+  onClicks,
+  style,
+  classNames = [],
+  className = '',
   setShowDropdown
 }: DropdownProps) {
-
   const height = 'fit-content';
   const rowStyle = {
     fontSize: '13px',
@@ -34,7 +33,7 @@ export function Dropdown({
     cursor: 'pointer',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
-  }
+  };
 
   // Handle outside clicks
   const wrapperRef: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
@@ -55,13 +54,13 @@ export function Dropdown({
     <div ref={wrapperRef} className={className}>
       <Card
         padding="disabled"
-        style={{ 
-          height: names.length  === 0 ? 0 : height, 
+        style={{
+          height: names.length === 0 ? 0 : height,
           width: '150px',
-          padding: names.length  === 0 ? '0px' : '4px 0px',
-          boxShadow:'0 8px 24px rgba(149,157,165,0.2)',
-          borderRadius: '8px', 
-          border: names.length  === 0 ? 'none' : '1px #e1e4e8 solid',
+          padding: names.length === 0 ? '0px' : '4px 0px',
+          boxShadow: '0 8px 24px rgba(149,157,165,0.2)',
+          borderRadius: '8px',
+          border: names.length === 0 ? 'none' : '1px #e1e4e8 solid',
           marginTop: '4px',
           display: 'inline-flex',
           flexDirection: 'column',
@@ -71,7 +70,7 @@ export function Dropdown({
         {names.map((name, index) => {
           const onClick = onClicks[index];
           const className = classNames[index] || '';
-          const icon =  icons ? icons[index] : null;
+          const icon = icons ? icons[index] : null;
 
           return (
             <div
@@ -81,8 +80,9 @@ export function Dropdown({
               role="button"
               className={className}
               style={{
-                ...rowStyle,
+                ...rowStyle
               }}
+              tabIndex={0}
             >
               {icon}
               {name}
@@ -92,4 +92,4 @@ export function Dropdown({
       </Card>
     </div>
   );
-};
+}

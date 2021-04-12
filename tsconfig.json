@@ -19,11 +19,18 @@
     "esModuleInterop": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+    "declarationMap": true,
+    "noEmit": true,
+    /* Module Resolution Options */
+    "resolveJsonModule": true,
+    "allowJs": true
   },
   "include": [
-    "./src/**/**/*",
-    "./custom.d.ts"
-  ],
+    "./src/**/**.tsx",
+    "./src/index.ts",
+    "./custom.d.ts",
+    "./rollup.config.js"
+   ],
   "exclude": [
     "node_modules",
     "dist"

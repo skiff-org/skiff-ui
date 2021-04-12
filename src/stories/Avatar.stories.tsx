@@ -5,21 +5,21 @@ import { Avatar, AvatarProps } from './Avatar';
 
 export default {
   title: 'Skiff/Avatar',
-  component: Avatar,
+  component: Avatar
 } as Meta;
 
-const Template: Story<AvatarProps> = (args) => <Avatar {...args} />;
+const Template: Story<AvatarProps> = args => <Avatar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'A',
+  children: 'A'
 };
 
 export const Square = Template.bind({});
 Square.args = {
   type: 'square',
   children: 'B',
-  color: "#027aff",
+  color: '#027aff',
   size: 'large'
 };
 

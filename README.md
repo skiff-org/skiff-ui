@@ -23,7 +23,7 @@ yarn add @skiff-ui
 ```
 
 ## Roadmap
-You can track our roadmap progress in the (insert Roadmap Project Board, github kanban TODO).
+You can track our progress by following our [roadmap](https://github.com/skiff-org/skiff-ui/projects/2).
 
 ## New Component Proposals
-We appreciate and encourage new component proposals. If you'd like to share any feedback or suggests, please submit an issue using the (insert component proposal issue template TODO) and we'll get in touch.
+We appreciate and encourage new component proposals. If you'd like to share any feedback or suggestions, email us at [support@skiff.org](mailto:support@skiff.org) and we'll get in touch.

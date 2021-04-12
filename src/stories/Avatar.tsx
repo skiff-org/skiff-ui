@@ -24,36 +24,36 @@ export interface AvatarProps {
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
-  showBadge=false,
-  badgePosition='br',
-  size='normal',
-  type='round',
-  color='#ff7587',
+  showBadge = false,
+  badgePosition = 'br',
+  size = 'normal',
+  type = 'round',
+  color = '#ff7587',
   children,
   style,
   invert,
-  onClick=() => {}
+  onClick = () => {}
 }) => {
   let bgColor;
   const hslRegex = /hsla\(\s*(-?\d+)\s*,\s*(\d+(?:\.\d+)?%)\s*,\s*(\d+(?:\.\d+)?%),\s*(\d+(?:\.\d+)?)\)/;
   const hsl = hslRegex.exec(color);
 
-  if (hsl !== null){
+  if (hsl !== null) {
     const colorArray = hsl.slice(1);
-    bgColor=`hsl(${colorArray[0]}, ${colorArray[1]}, 85%)`;
+    bgColor = `hsl(${colorArray[0]}, ${colorArray[1]}, 85%)`;
   } else {
     bgColor = color.concat('68');
   }
-  
+
   const badge = (
     <div className="avatar-badge" />
   );
 
   return (
-    <div className={`avatar ${size} ${type} ${badgePosition} ${showBadge && 'online'}`} style={style} onClick={onClick}>
-      <div className="avatar-background" style={{ backgroundColor: !invert ? bgColor : color }}/>
-      <span className="avatar-name" style={{ color: !invert ? color: 'white' }}>{children}</span>
+    <div className={`avatar ${size} ${type} ${badgePosition} ${showBadge && 'online'}`} style={style} onKeyPress={() => {}} onClick={onClick} role="button" tabIndex={0}>
+      <div className="avatar-background" style={{ backgroundColor: !invert ? bgColor : color }} />
+      <span className="avatar-name" style={{ color: !invert ? color : 'white' }}>{children}</span>
       {showBadge && badge}
     </div>
-  )
+  );
 };

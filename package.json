@@ -15,9 +15,12 @@
     "build": "rm -rf ./dist && rollup -c",
     "start": "./node_modules/.bin/webpack-dev-server --port 9000 --open --hot --inline --content-base src",
     "dev": "yarn build",
-    "storybook": "start-storybook -p 6006",
+    "audit-dependencies": "audit-ci --config audit-ci.json",
+    "storybook": "start-storybook -p 6006 -s public",
     "heroku-build": "build-storybook -s public",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint . --cache --ext .ts,.tsx",
+    "lint-fix": "yarn --silent lint --fix; exit 0"
   },
   "engines": {
     "node": ">=10.13.0"
@@ -25,8 +28,16 @@
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@rollup/plugin-json": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "audit-ci": "^3.2.0",
     "emoji-mart": "^3.0.0",
     "emotion": "^11.0.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-sonarjs": "^0.6.0",
     "http-serve": "^1.0.1",
     "http-server": "^0.12.3",
     "react": "^17.0.2",
@@ -74,5 +85,9 @@
     "webpack": "4.46.0",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "^3.11.0"
+  },
+  "resolutions": {
+    "qs": "6.3.2",
+    "minimist": "1.2.3"
   }
 }
