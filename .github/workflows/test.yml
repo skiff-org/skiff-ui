@@ -20,7 +20,7 @@ jobs:
       - run: yarn audit-dependencies
         working-directory: ./
 
-  frontend:
+  build storybook:
     runs-on: ubuntu-latest
 
     steps:
