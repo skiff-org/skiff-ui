@@ -70,7 +70,7 @@
     "css-loader": "^5.2.0",
     "node-sass": "^5.0.0",
     "postcss-discard-comments": "^4.0.2",
-    "react-docgen-typescript": "1.21.0",
+    "react-docgen-typescript": "1.22.0",
     "rollup": "^2.44.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
