@@ -59,7 +59,7 @@
     "@rollup/plugin-url": "^6.0.0",
     "@storybook/addon-actions": "^6.2.8",
     "@storybook/addon-essentials": "^6.2.3",
-    "@storybook/addon-links": "^6.2.3",
+    "@storybook/addon-links": "^6.2.8",
     "@storybook/react": "^6.2.3",
     "@types/emoji-mart": "^3.0.4",
     "@types/react": "^17.0.0",
