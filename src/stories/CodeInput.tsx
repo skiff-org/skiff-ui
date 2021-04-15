@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { TextField } from './TextField';
+import TextField from './TextField';
 
 import './CodeInput.scss';
 
@@ -24,7 +24,7 @@ export type CodeInputProps = {
  * A Numeric Code input component for MFA setup. This component
  * takes input as a set of square text fields.
  */
-export function CodeInput(props: CodeInputProps) {
+export default function CodeInput(props: CodeInputProps) {
   const {
     codeLength, value, onChange, onKeyPress, numeric, size = '40px', fontSize = '1.6em'
   } = props;

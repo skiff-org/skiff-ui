@@ -44,7 +44,7 @@ export interface TextFieldProps {
   innerRef?: React.Ref<HTMLElement>;
 }
 
-export const TextField: React.FC<TextFieldProps> = ({
+const TextField: React.FC<TextFieldProps> = ({
   type = 'default',
   width = '200px',
   placeholder = '',
@@ -171,3 +171,5 @@ export const TextField: React.FC<TextFieldProps> = ({
     </div>
   );
 };
+
+export default TextField;

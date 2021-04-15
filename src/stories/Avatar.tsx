@@ -23,7 +23,7 @@ export interface AvatarProps {
   badgePosition?: 'tl' | 'tr' | 'bl' | 'br';
 }
 
-export const Avatar: React.FC<AvatarProps> = ({
+const Avatar: React.FC<AvatarProps> = ({
   showBadge = false,
   badgePosition = 'br',
   size = 'normal',
@@ -57,3 +57,5 @@ export const Avatar: React.FC<AvatarProps> = ({
     </div>
   );
 };
+
+export default Avatar;

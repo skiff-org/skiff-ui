@@ -25,7 +25,7 @@ export interface CardProps {
   onMouseLeave?: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({
+const Card: React.FC<CardProps> = ({
   width = '45%',
   height = '400px',
   type = 'default',
@@ -102,3 +102,5 @@ export const Card: React.FC<CardProps> = ({
     </div>
   );
 };
+
+export default Card;

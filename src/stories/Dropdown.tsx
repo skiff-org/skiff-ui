@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Card } from './Card';
+import Card from './Card';
 
 export interface DropdownProps {
   /** The list of labels */
@@ -17,7 +17,7 @@ export interface DropdownProps {
   setShowDropdown?: ((state: boolean) => void);
 }
 
-export function Dropdown({
+export default function Dropdown({
   names,
   icons,
   onClicks,
