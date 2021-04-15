@@ -1,19 +1,23 @@
 {
   "name": "skiff-ui",
   "version": "1.0.0",
-  "description": "",
+  "description": "<p align=\"center\">   <img width=\"150px\" src=\"/static/assets/skiff-logo.png\"> </p>",
   "prepublish": "tsc",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "./dist/"
   ],
+  "exports": {
+    "./": "./dist/"
+  },
+  "type": "module",
   "author": "Skiff Inc.",
-  "license": "AGPL3.0",
+  "license": "AGPL-3.0",
   "scripts": {
     "build": "rm -rf ./dist && rollup -c",
-    "start": "./node_modules/.bin/webpack-dev-server --port 9000 --open --hot --inline --content-base src",
+    "start": "webpack-dev-server --port 9000 --open --hot --inline --content-base src",
     "dev": "yarn build",
     "audit-dependencies": "audit-ci --config audit-ci.json",
     "storybook": "start-storybook -p 6006 -s public",
@@ -89,5 +93,20 @@
   "resolutions": {
     "qs": "6.3.2",
     "minimist": "1.2.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/skiff-org/skiff-ui.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "skiff",
+    "design",
+    "skiff-ui"
+  ],
+  "bugs": {
+    "url": "https://github.com/skiff-org/skiff-ui/issues"
+  },
+  "homepage": "https://github.com/skiff-org/skiff-ui#readme"
 }
