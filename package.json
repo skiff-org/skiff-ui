@@ -12,7 +12,6 @@
   "exports": {
     "./": "./dist/"
   },
-  "type": "module",
   "author": "Skiff Inc.",
   "license": "AGPL-3.0",
   "scripts": {
@@ -44,6 +43,8 @@
     "eslint-plugin-sonarjs": "^0.6.0",
     "http-serve": "^1.0.1",
     "http-server": "^0.12.3",
+    "minimist": "1.2.5",
+    "qs": "6.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-mentions": "^4.1.1",
@@ -79,7 +80,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-typescript2": "^0.30.0",
-    "sass-loader": "^11.0.1",
+    "sass-loader": "10.1.1",
     "source-map-loader": "2.0.1",
     "style-loader": "^2.0.0",
     "svg-url-loader": "^7.0.0",
@@ -91,8 +92,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "resolutions": {
-    "qs": "6.3.2",
-    "minimist": "1.2.3"
+    "qs": "6.10.1",
+    "minimist": "1.2.5"
   },
   "repository": {
     "type": "git",
