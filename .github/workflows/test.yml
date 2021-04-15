@@ -1,0 +1,37 @@
+name: Test
+
+on:
+  push:
+    branches: [ main, develop]
+  pull_request:
+    branches: [ main, develop]
+
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14
+
+      # See https://github.com/yarnpkg/yarn/issues/2629#issuecomment-583791651 :(
+      - run: while ! yarn; do echo --- ; done
+      - run: yarn audit-dependencies
+        working-directory: ./
+
+  build storybook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14
+
+      # See https://github.com/yarnpkg/yarn/issues/2629#issuecomment-583791651 :(
+      - run: while ! yarn; do echo --- ; done
+      - run: yarn run lint
+      - run: yarn run build
+      - run: yarn tsc
+      - run: yarn run heroku-build

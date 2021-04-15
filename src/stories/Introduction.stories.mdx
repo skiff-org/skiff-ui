@@ -1,0 +1,182 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import Code from './assets/code-brackets.svg';
+import Colors from './assets/colors.svg';
+import Comments from './assets/comments.svg';
+import Flow from './assets/flow.svg';
+import Repo from './assets/repo.svg';
+import StackAlt from './assets/stackalt.svg';
+
+<Meta title="Skiff/Introduction" />
+
+<style>{`
+  .subheading {
+    --mediumdark: '#999999';
+    font-weight: 900;
+    font-size: 13px;
+    color: #999;
+    letter-spacing: 6px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 40px;
+  }
+
+  .link-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 10px;
+  }
+
+  @media (min-width: 620px) {
+    .link-list {
+      row-gap: 20px;
+      column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media all and (-ms-high-contrast:none) {
+  .link-list {
+      display: -ms-grid;
+      -ms-grid-columns: 1fr 1fr;
+      -ms-grid-rows: 1fr 1fr;
+    }
+  }
+
+  .link-item {
+    display: block;
+    padding: 20px 30px 20px 15px;
+    border: 1px solid #00000010;
+    border-radius: 5px;
+    transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
+    color: #333333;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .link-item:hover {
+    border-color: #1EA7FD50;
+    transform: translate3d(0, -3px, 0);
+    box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+  }
+
+  .link-item:active {
+    border-color: #1EA7FD;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .link-item strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .link-item img {
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+    flex: none;
+  }
+
+  .link-item span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .tip {
+    display: inline-block;
+    border-radius: 1em;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: 700;
+    background: #E7FDD8;
+    color: #66BF3C;
+    padding: 4px 12px;
+    margin-right: 10px;
+    vertical-align: top;
+  }
+
+  .tip-wrapper {
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .tip-wrapper code {
+    font-size: 12px;
+    display: inline-block;
+  }
+
+  
+`}</style>
+
+# Welcome to Skiff UI
+
+Skiff UI is a react components library for the Skiff UI Design System. 
+It's currently in use at [**Skiff**](https://skiff.org), an end-to-end encrypted document collaboration platform.
+
+You can browse example components by navigating to them in the sidebar. You can also view their code in the `src/stories` directory to learn how they work.
+
+<div className="subheading">Library</div>
+
+<div className="link-list">
+  <a
+    className="link-item"
+    href="?path=/story/skiff-avatar--default"
+  >
+    <img src={Colors} alt="plugin" />
+    <span>
+      <strong>Avatar</strong>
+      A component for displaying names and badges.
+    </span>
+  </a>
+  <a
+    className="link-item"
+    href="?path=/story/skiff-button--primary"
+  >
+    <img src={StackAlt} alt="Build" />
+    <span>
+      <strong>Button</strong>
+      A component for actions, forms, and submissions.
+    </span>
+  </a>
+  <a
+    className="link-item"
+    href="?path=/story/skiff-card--primary"
+    
+  >
+    <img src={Repo} alt="colors" />
+    <span>
+      <strong>Card</strong>
+      A wrapper component for popups, dropdowns, and containers.
+    </span>
+  </a>
+  <a
+    className="link-item"
+    href="?path=/story/skiff-code-input--default"
+    
+  >
+    <img src={Flow} alt="flow" />
+    <span>
+      <strong>Code Input</strong>
+      Providers and mocking for data libraries
+    </span>
+  </a>
+
+  <a className="link-item" href="?path=/story/skiff-dropdown--default">
+    <img src={Comments} alt="repo" />
+    <span>
+      <strong>Dropdown</strong>
+      A component for menus and navigation actions.
+    </span>
+  </a>
+  <a className="link-item" href="?path=/story/skiff-text-field--default">
+    <img src={Code} alt="direction" />
+    <span>
+      <strong>Text Field</strong>
+      A component for inputs and fields.
+    </span>
+  </a>
+</div>
