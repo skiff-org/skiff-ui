@@ -71,7 +71,7 @@
     "@types/react-mentions": "^4.1.0",
     "autoprefixer": "9",
     "babel-loader": "^8.2.2",
-    "css-loader": "^5.2.0",
+    "css-loader": "^5.2.4",
     "node-sass": "^5.0.0",
     "postcss-discard-comments": "^4.0.2",
     "react-docgen-typescript": "1.22.0",
