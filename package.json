@@ -35,7 +35,7 @@
     "audit-ci": "^3.2.0",
     "emoji-mart": "^3.0.0",
     "emotion": "^11.0.0",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
