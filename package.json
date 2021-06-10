@@ -1,5 +1,5 @@
 {
-  "name": "skiff-ui",
+  "name": "@skiff-org/skiff-ui",
   "version": "1.0.0",
   "description": "<p align=\"center\">   <img width=\"150px\" src=\"/static/assets/skiff-logo.png\"> </p>",
   "prepublish": "tsc",
@@ -43,10 +43,13 @@
     "eslint-plugin-sonarjs": "^0.6.0",
     "http-server": "^0.12.3",
     "minimist": "1.2.5",
+    "normalize-url": "4.5.1",
     "qs": "6.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-mentions": "^4.1.1",
+    "trim": "0.0.3",
+    "trim-newlines": "3.0.1",
     "typesafe-actions": "5.1.0"
   },
   "peerDependencies": {
