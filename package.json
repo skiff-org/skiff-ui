@@ -66,7 +66,7 @@
   "devDependencies": {
     "@babel/core": "^7.13.16",
     "@rollup/plugin-commonjs": "^18.0.0",
-    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-url": "^6.0.0",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
@@ -80,7 +80,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "node-sass": "^5.0.0",
-    "postcss-discard-comments": "^4.0.2",
+    "postcss-discard-comments": "^5.0.0",
     "react-docgen-typescript": "1.22.0",
     "rollup": "^2.51.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
