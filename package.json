@@ -31,7 +31,7 @@
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
     "audit-ci": "^3.2.0",
     "browserslist": "4.16.5",
     "ecstatic": "^4.1.4",
@@ -80,7 +80,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "node-sass": "^5.0.0",
-    "postcss-discard-comments": "^4.0.2",
+    "postcss-discard-comments": "^5.0.1",
     "react-docgen-typescript": "1.22.0",
     "rollup": "^2.52.7",
     "rollup-plugin-peer-deps-external": "^2.2.4",
