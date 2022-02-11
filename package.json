@@ -79,7 +79,7 @@
     "autoprefixer": "9",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.1",
     "postcss-discard-comments": "^5.0.1",
     "react-docgen-typescript": "1.22.0",
     "rollup": "^2.52.7",
