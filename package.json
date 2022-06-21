@@ -31,7 +31,7 @@
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
     "audit-ci": "^3.2.0",
     "browserslist": "4.17.6",
     "ecstatic": "^4.1.4",
