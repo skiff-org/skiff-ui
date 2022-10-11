@@ -45,7 +45,7 @@
     "eslint-plugin-sonarjs": "^0.7.0",
     "glob-parent": "5.1.2",
     "http-server": "^0.12.3",
-    "minimist": "1.2.5",
+    "minimist": "1.2.7",
     "normalize-url": "4.5.1",
     "postcss": "8.3.5",
     "qs": "6.10.1",
@@ -99,7 +99,7 @@
   },
   "resolutions": {
     "qs": "6.10.1",
-    "minimist": "1.2.5"
+    "minimist": "1.2.7"
   },
   "repository": {
     "type": "git",
