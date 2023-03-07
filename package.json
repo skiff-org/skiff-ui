@@ -48,7 +48,7 @@
     "minimist": "1.2.5",
     "normalize-url": "4.5.1",
     "postcss": "8.3.5",
-    "qs": "6.10.1",
+    "qs": "6.11.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-mentions": "^4.1.1",
@@ -98,7 +98,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "resolutions": {
-    "qs": "6.10.1",
+    "qs": "6.11.1",
     "minimist": "1.2.5"
   },
   "repository": {
