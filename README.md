@@ -8,7 +8,7 @@
 
 ## Documentation
 
-Our documentation and examples can be found at [Skiff UI](https://ui.skiff.org).
+Skiff Mail's technical model is documented in [Skiff Whitepaper](https://skiff-org.github.io/whitepaper/Skiff_Whitepaper_2022.pdf).
 
 ## Installation
 
