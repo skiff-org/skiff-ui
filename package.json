@@ -47,17 +47,12 @@
     "framer-motion": "^6.3.3",
     "lodash": "^4.17.21",
     "notistack": "^2.0.3",
+    "react": "18.2.0",
     "react-device-detect": "2.1.2",
     "styled-components": "^5.3.3"
   },
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
   "devDependencies": {
     "@types/lodash": "^4",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.24",
     "@types/svgo": "^2",
     "css-loader": "^5.2.6",
