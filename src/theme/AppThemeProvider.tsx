@@ -1,19 +1,9 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import {
-  LocalStorageThemeMode,
-  StorageOnlyThemeMode,
-  ThemeMode,
-} from "../types";
-import { themeNames } from "./theme";
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { LocalStorageThemeMode, StorageOnlyThemeMode, ThemeMode } from '../types';
+import { themeNames } from './theme';
 
-export const THEME_SELECT_VERSION = "0.1.0";
+export const THEME_SELECT_VERSION = '0.1.0';
 
 // validate type (necessary if older theme still stored in local storage)
 export function isOfTypeThemeName(keyInput: LocalStorageThemeMode) {
@@ -32,12 +22,12 @@ type ThemeContextType = {
 export const ThemeContext = createContext<ThemeContextType>({
   theme: ThemeMode.LIGHT,
   storedTheme: StorageOnlyThemeMode.SYSTEM,
-  setStoredTheme: () => {},
+  setStoredTheme: () => {}
 });
 
 export const useTheme = () => useContext(ThemeContext);
 
-export const THEME_LOCAL_STORAGE_KEY = "THEME_MODE";
+export const THEME_LOCAL_STORAGE_KEY = 'THEME_MODE';
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -46,16 +36,18 @@ const GlobalStyles = createGlobalStyle`
     font-smoothing: antialiased;
   }
 `;
-export const AppThemeProvider: React.FC = ({ children }) => {
+
+interface Props {
+  children: React.ReactNode;
+}
+
+export const AppThemeProvider: React.FC<Props> = ({ children }) => {
   const [themeName, setThemeName] = useState<ThemeMode>(ThemeMode.DARK);
-  const [storedThemeState, setStoredThemeState] =
-    useState<LocalStorageThemeMode>(StorageOnlyThemeMode.SYSTEM);
+  const [storedThemeState, setStoredThemeState] = useState<LocalStorageThemeMode>(StorageOnlyThemeMode.SYSTEM);
 
   let darkSystemThemeMediaQuery: MediaQueryList | undefined;
-  if (typeof window !== "undefined") {
-    darkSystemThemeMediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    );
+  if (typeof window !== 'undefined') {
+    darkSystemThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
   }
 
   const updateRootData = (theme: ThemeMode) => {
@@ -66,10 +58,7 @@ export const AppThemeProvider: React.FC = ({ children }) => {
   };
 
   const updateThemeName = useCallback(
-    (
-      name: LocalStorageThemeMode,
-      darkSystemThemeMediaQuery?: MediaQueryList
-    ) => {
+    (name: LocalStorageThemeMode, darkSystemThemeMediaQuery?: MediaQueryList) => {
       setStoredThemeState(name);
       // if name is light or dark, set it to theme
       if (isOfTypeThemeName(name)) {
@@ -77,9 +66,7 @@ export const AppThemeProvider: React.FC = ({ children }) => {
         updateRootData(name as ThemeMode);
       } else if (darkSystemThemeMediaQuery !== undefined) {
         // otherwise parse the system theme
-        const themeMode = darkSystemThemeMediaQuery.matches
-          ? ThemeMode.DARK
-          : ThemeMode.LIGHT;
+        const themeMode = darkSystemThemeMediaQuery.matches ? ThemeMode.DARK : ThemeMode.LIGHT;
         setThemeName(themeMode);
         updateRootData(themeMode);
       }
@@ -96,28 +83,18 @@ export const AppThemeProvider: React.FC = ({ children }) => {
   // Get theme from localStorage when app loads
   useEffect(() => {
     // if nothing stored default to system
-    const storedThemeMode =
-      (localStorage.getItem(THEME_LOCAL_STORAGE_KEY) as ThemeMode) ||
-      StorageOnlyThemeMode.SYSTEM;
+    const storedThemeMode = (localStorage.getItem(THEME_LOCAL_STORAGE_KEY) as ThemeMode) || StorageOnlyThemeMode.SYSTEM;
     updateThemeName(storedThemeMode, darkSystemThemeMediaQuery);
   }, []);
 
   // Listen to live system changes
   useEffect(() => {
-    if (
-      storedThemeState !== StorageOnlyThemeMode.SYSTEM ||
-      darkSystemThemeMediaQuery === undefined
-    )
-      return;
-    const updateSystemTheme = () =>
-      updateThemeName(StorageOnlyThemeMode.SYSTEM, darkSystemThemeMediaQuery);
-    darkSystemThemeMediaQuery.addEventListener("change", updateSystemTheme);
+    if (storedThemeState !== StorageOnlyThemeMode.SYSTEM || darkSystemThemeMediaQuery === undefined) return;
+    const updateSystemTheme = () => updateThemeName(StorageOnlyThemeMode.SYSTEM, darkSystemThemeMediaQuery);
+    darkSystemThemeMediaQuery.addEventListener('change', updateSystemTheme);
     return () => {
       if (darkSystemThemeMediaQuery === undefined) return;
-      darkSystemThemeMediaQuery.removeEventListener(
-        "change",
-        updateSystemTheme
-      );
+      darkSystemThemeMediaQuery.removeEventListener('change', updateSystemTheme);
     };
   }, [storedThemeState, darkSystemThemeMediaQuery, updateThemeName]);
 
@@ -128,7 +105,7 @@ export const AppThemeProvider: React.FC = ({ children }) => {
         value={{
           theme: themeName,
           setStoredTheme,
-          storedTheme: storedThemeState,
+          storedTheme: storedThemeState
         }}
       >
         <GlobalStyles />

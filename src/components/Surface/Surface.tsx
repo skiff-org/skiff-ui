@@ -305,6 +305,7 @@ function Surface(
     const overflowY = surfaceBottom + DROPDOWN_GAP > window.innerHeight;
     // if it overflows in Y, shift it to the top
     if (overflowY) {
+      if (typeof window === 'undefined') return;
       const requiredShift = window.innerHeight - surfaceBottom - DROPDOWN_GAP;
       // if the shifting amount will shift the sub-menu passed the bottom edge of the button
       // align the lower edge of the sub-menu with the lower edge of the button

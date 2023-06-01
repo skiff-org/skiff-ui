@@ -61,7 +61,7 @@ export const useKeyboardNavigation = (
 
   useEffect(() => {
     if (!setIdx || disabled) return;
-
+    if (typeof window === 'undefined') return;
     window.addEventListener(KeyboardEvents.KEY_DOWN, onKeyDown);
     window.addEventListener(MouseEvents.MOUSE_MOVE, onMouseMove);
     return () => {
