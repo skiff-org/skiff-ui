@@ -44,11 +44,14 @@
   "dependencies": {
     "@floating-ui/react-dom": "^1.0.1",
     "@floating-ui/react-dom-interactions": "^0.11.0",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
     "framer-motion": "^6.3.3",
     "lodash": "^4.17.21",
     "notistack": "^2.0.3",
     "react": "^18.2.0",
     "react-device-detect": "2.1.2",
+    "react-dom": "^18.2.0",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
