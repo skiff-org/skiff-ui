@@ -69,11 +69,12 @@ git checkout -b new-branch
 git push -u origin HEAD
 ```
 
-7. Go to [the repository](https://github.com/skif-org/skiff-ui) and make a Pull Request.
+7. Go to [the repository](https://github.com/skiff-org/skiff-ui/pulls) and make a Pull Request.
 
 The core team will promptly review your Pull Request and either merge it or request changes.
 
 ### How to structure Pull Requests?
+
 - All branches should be targeted at `main`.
 - The reference issue number should be include in the branch name.
 - Pull Request titles should be formated as `[Issue #] [Component] Imperative description`. For example, `[#1045] [Button] Add force theme support.`
@@ -81,7 +82,7 @@ The core team will promptly review your Pull Request and either merge it or requ
 - All code should be linted, well-formated, and type-safe (running `yarn prettier`, `yarn lint`, and `yarn typescript`)
 - Any API changes should tag the core team to update documentation.
 - Self-reviewing and commenting on your own code is highly appreciated.
-- The branch should be up-to-date with the target branch `main`. 
+- The branch should be up-to-date with the target branch `main`.
 
 ### Documentation
 
