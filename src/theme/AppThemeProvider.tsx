@@ -29,14 +29,6 @@ export const useTheme = () => useContext(ThemeContext);
 
 export const THEME_LOCAL_STORAGE_KEY = 'THEME_MODE';
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    font-family: 'Skiff Sans Text', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
-  }
-`;
-
 interface Props {
   children: React.ReactNode;
 }
@@ -44,6 +36,14 @@ interface Props {
 export const AppThemeProvider: React.FC<Props> = ({ children }) => {
   const [themeName, setThemeName] = useState<ThemeMode>(ThemeMode.DARK);
   const [storedThemeState, setStoredThemeState] = useState<LocalStorageThemeMode>(StorageOnlyThemeMode.SYSTEM);
+
+  const GlobalStyles = createGlobalStyle`
+  body {
+    font-family: 'Skiff Sans Text', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+  }
+`;
 
   let darkSystemThemeMediaQuery: MediaQueryList | undefined;
   if (typeof window !== 'undefined') {
