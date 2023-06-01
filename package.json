@@ -1,6 +1,6 @@
 {
-  "name": "@jgdevelopment/skiff-ui-private",
-  "version": "1.0.30",
+  "name": "@skiff-org/skiff-ui",
+  "version": "1.1.6",
   "prepublish": "tsc",
   "main": "./src/index.ts",
   "module": "./built/src/index.d.ts",
