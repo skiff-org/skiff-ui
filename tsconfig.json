@@ -4,6 +4,8 @@
     "lib": ["dom", "esnext"],
     "importHelpers": true,
     "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./built",
     "jsx": "react-jsx",
     "declarationMap": true,
     "sourceMap": true,
@@ -20,7 +22,8 @@
     "baseUrl": ".",
     "skipLibCheck": true,
     "composite": true,
-    "declarationDir": "dist/",
-    "tsBuildInfoFile": "dist/.tsbuildinfo",
-  }
+  },
+  "exclude": [
+    "./built/**/*"
+  ]
 }
