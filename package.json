@@ -1,119 +1,75 @@
 {
-  "name": "@skiff-org/skiff-ui",
-  "version": "1.0.0",
-  "description": "<p align=\"center\">   <img width=\"150px\" src=\"/static/assets/skiff-logo.png\"> </p>",
+  "name": "@jgdevelopment/skiff-ui-private",
+  "version": "1.0.16",
   "prepublish": "tsc",
-  "main": "./dist/index.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "./dist/"
+  "main": "src/index.ts",
+  "module": "dist/esm/index.ts",
+  "packageManager": "yarn@3.5.0",
+  "sideEffects": [
+    "*.css"
   ],
   "exports": {
-    "./": "./dist/"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./dist/esm/index.css": {
+      "import": "./dist/esm/index.css",
+      "require": "./dist/cjs/index.css"
+    }
   },
-  "author": "Skiff Inc.",
-  "license": "AGPL-3.0",
+  "types": "dist/src/index.d.ts",
+  "author": "Skiff World Inc.",
+  "keywords": [
+    "react",
+    "react-component",
+    "components",
+    "skiff",
+    "skiff-ui",
+    "react ui"
+  ],
+  "license": "MIT",
   "scripts": {
-    "build": "rm -rf ./dist && rollup -c",
-    "start": "webpack-dev-server --port 9000 --open --hot --inline --content-base src",
-    "dev": "yarn build",
-    "audit-dependencies": "audit-ci --config audit-ci.json",
-    "storybook": "start-storybook -p 6006 -s public",
-    "heroku-build": "build-storybook -s public",
-    "build-storybook": "build-storybook",
-    "lint": "eslint . --cache --ext .ts,.tsx",
-    "lint-fix": "yarn --silent lint --fix; exit 0"
+    "emit-ts": "yarn tsc --build",
+    "lint": "yarn run -T eslint . --cache --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "yarn lint --fix",
+    "build": "yarn node build.js",
+    "watch": "WATCH=1 yarn build",
+    "clean": "rm -rf dist",
+    "optimize:svg": "echo \"disabled until svg id issue is fixed (see PROD-341)\""
   },
   "engines": {
     "node": ">=10.13.0"
   },
   "dependencies": {
-    "@emotion/core": "^11.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "audit-ci": "^3.2.0",
-    "browserslist": "4.17.6",
-    "ecstatic": "^4.1.4",
-    "emoji-mart": "^3.0.0",
-    "emotion": "^11.0.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-typescript": "^12.3.1",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-sonarjs": "^0.7.0",
-    "glob-parent": "5.1.2",
-    "http-server": "^0.12.3",
-    "minimist": "1.2.5",
-    "normalize-url": "4.5.1",
-    "postcss": "8.3.5",
-    "qs": "6.10.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-mentions": "^4.1.1",
-    "trim": "0.0.3",
-    "trim-newlines": "4.0.2",
-    "typesafe-actions": "5.1.0"
+    "@floating-ui/react-dom": "^1.0.1",
+    "@floating-ui/react-dom-interactions": "^0.11.0",
+    "framer-motion": "^6.3.3",
+    "lodash": "^4.17.21",
+    "notistack": "^2.0.3",
+    "react-device-detect": "2.1.2",
+    "styled-components": "^5.3.3"
   },
   "peerDependencies": {
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "@types/react-mentions": "^4.1.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.16",
-    "@rollup/plugin-commonjs": "^18.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
-    "@rollup/plugin-url": "^6.0.0",
-    "@storybook/addon-actions": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/react": "^6.3.2",
-    "@types/emoji-mart": "^3.0.8",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "@types/react-mentions": "^4.1.0",
-    "autoprefixer": "9",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.2.4",
-    "node-sass": "^5.0.0",
-    "postcss-discard-comments": "^5.0.1",
-    "react-docgen-typescript": "1.22.0",
-    "rollup": "^2.52.7",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "sass-loader": "12.3.0",
-    "source-map-loader": "2.0.1",
-    "style-loader": "^2.0.0",
-    "svg-url-loader": "^7.0.0",
-    "ts-loader": "9.2.6",
-    "typescript": "^4.1.5",
-    "url-loader": "^4.1.0",
-    "webpack": "5.36.1",
-    "webpack-cli": "4.6.0",
-    "webpack-dev-server": "^3.11.0"
+    "@types/lodash": "^4",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.24",
+    "@types/svgo": "^2",
+    "css-loader": "^5.2.6",
+    "esbuild": "^0.15.6",
+    "esbuild-node-externals": "^1.5.0",
+    "esbuild-plugin-svgr": "^1.0.1",
+    "esbuild-sass-plugin": "^2.2.6",
+    "identity-obj-proxy": "^3.0.0",
+    "prettier": "^2.*",
+    "sass": "^1.53.0",
+    "svgo": "^2.8.0",
+    "typescript": "^5.0.0"
   },
-  "resolutions": {
-    "qs": "6.10.1",
-    "minimist": "1.2.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/skiff-org/skiff-ui.git"
-  },
-  "keywords": [
-    "react",
-    "react-component",
-    "skiff",
-    "design",
-    "skiff-ui"
-  ],
-  "bugs": {
-    "url": "https://github.com/skiff-org/skiff-ui/issues"
-  },
-  "homepage": "https://github.com/skiff-org/skiff-ui#readme"
+  "description": ""
 }

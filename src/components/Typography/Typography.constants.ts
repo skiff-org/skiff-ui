@@ -1,0 +1,63 @@
+import { Alignment, ThemeMode } from "../../types";
+import { Color } from "../../utils/colorUtils";
+
+export enum TypographyOverflow {
+  VISIBLE = "visible",
+  HIDDEN = "hidden",
+}
+
+export enum TypographySize {
+  H1 = "h1",
+  H2 = "h2",
+  H3 = "h3",
+  H4 = "h4",
+  LARGE = "large",
+  MEDIUM = "medium",
+  SMALL = "small",
+  CAPTION = "caption",
+}
+
+export enum TypographyWeight {
+  BOLD = 560,
+  MEDIUM = 470,
+  REGULAR = 380,
+}
+
+export interface TypographyProps {
+  align?: Alignment;
+  /** Capitalize text */
+  capitalize?: boolean;
+  children?: React.ReactNode;
+  className?: string;
+  /** Text color */
+  color?: Color;
+  /** Indicator for e2e tests */
+  dataTest?: string;
+  forceTheme?: ThemeMode;
+  hideOverflow?: boolean;
+  id?: string;
+  /** Make Typography component an inline element */
+  inline?: boolean;
+  /** Overrides CSS max-width property */
+  maxWidth?: string;
+  /** Overrides CSS min-width property */
+  minWidth?: string;
+  mono?: boolean;
+  /** CSS overflow property */
+  overflow?: TypographyOverflow;
+  selectable?: boolean;
+  size?: TypographySize;
+  /** CSS transition property */
+  transition?: string;
+  /** Underline text */
+  underline?: boolean;
+  /** Uppercase text */
+  uppercase?: boolean;
+  /** The type of text */
+  weight?: TypographyWeight;
+  /** Overrides CSS width property */
+  width?: string;
+  /** Whether text lines may wrap at soft-wrap opportunities */
+  wrap?: boolean;
+  onClick?: (e: React.MouseEvent) => void;
+}

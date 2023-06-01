@@ -1,38 +1,26 @@
 {
-
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
+    "module": "es6",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
+    "declaration": true,
+    "jsx": "react-jsx",
+    "declarationMap": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
     "strict": true,
     "pretty": true,
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "esnext",
-    "lib": ["es6", "es2015", "dom", "es2017"],
-    "target": "es5",
-    "jsx": "react",
-    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "declaration": true,
-    "declarationDir": "dist",
-    "esModuleInterop": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "declarationMap": true,
-    "noEmit": true,
-    /* Module Resolution Options */
     "resolveJsonModule": true,
-    "allowJs": true
-  },
-  "include": [
-    "./src/**/**.tsx",
-    "./src/index.ts",
-    "./custom.d.ts",
-    "./rollup.config.js"
-   ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+    "moduleResolution": "node",
+    "target": "es2021",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "composite": true,
+    "declarationDir": "dist/",
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+  }
 }
