@@ -56,6 +56,8 @@
   },
   "devDependencies": {
     "@types/lodash": "^4",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@types/styled-components": "^5.1.24",
     "@types/svgo": "^2",
     "css-loader": "^5.2.6",
@@ -67,8 +69,6 @@
     "prettier": "^2.*",
     "sass": "^1.53.0",
     "svgo": "^2.8.0",
-    "@types/react": "^18.2.7",
-    "@types/react-dom": "^18.2.4",
     "typescript": "^5.0.0"
   },
   "description": ""
