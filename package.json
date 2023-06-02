@@ -65,7 +65,7 @@
     "@types/styled-components": "^5.1.24",
     "@types/svgo": "^2",
     "css-loader": "^5.2.6",
-    "esbuild": "^0.15.6",
+    "esbuild": "^0.17.19",
     "esbuild-node-externals": "^1.5.0",
     "esbuild-plugin-svgr": "^1.0.1",
     "esbuild-sass-plugin": "^2.2.6",
