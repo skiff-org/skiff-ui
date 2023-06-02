@@ -67,7 +67,7 @@
     "css-loader": "^5.2.6",
     "esbuild": "^0.15.6",
     "esbuild-node-externals": "^1.5.0",
-    "esbuild-plugin-svgr": "^1.0.1",
+    "esbuild-plugin-svgr": "^2.0.0",
     "esbuild-sass-plugin": "^2.2.6",
     "identity-obj-proxy": "^3.0.0",
     "prettier": "^2.*",
