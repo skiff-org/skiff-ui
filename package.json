@@ -46,7 +46,7 @@
     "node": ">=10.13.0"
   },
   "dependencies": {
-    "@floating-ui/react-dom": "^1.0.1",
+    "@floating-ui/react-dom": "^2.0.1",
     "@floating-ui/react-dom-interactions": "^0.11.0",
     "framer-motion": "^6.3.3",
     "lodash": "^4.17.21",
