@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import { Alignment, ThemeMode } from "../../types";
-import { Color } from "../../utils/colorUtils";
+import { Alignment, ThemeMode } from '../../types';
+import { Color } from '../../utils/colorUtils';
 export declare enum TypographyOverflow {
     VISIBLE = "visible",
     HIDDEN = "hidden"
@@ -36,9 +36,9 @@ export interface TypographyProps {
     /** Make Typography component an inline element */
     inline?: boolean;
     /** Overrides CSS max-width property */
-    maxWidth?: string;
+    maxWidth?: number | string;
     /** Overrides CSS min-width property */
-    minWidth?: string;
+    minWidth?: number | string;
     mono?: boolean;
     /** CSS overflow property */
     overflow?: TypographyOverflow;
@@ -53,7 +53,7 @@ export interface TypographyProps {
     /** The type of text */
     weight?: TypographyWeight;
     /** Overrides CSS width property */
-    width?: string;
+    width?: number | string;
     /** Whether text lines may wrap at soft-wrap opportunities */
     wrap?: boolean;
     onClick?: (e: React.MouseEvent) => void;

@@ -5,6 +5,10 @@ export declare enum Alignment {
     LEFT = "left",
     RIGHT = "right"
 }
+export declare enum FilledVariant {
+    FILLED = "filled",
+    UNFILLED = "unfilled"
+}
 export declare enum KeyboardEvents {
     KEY_DOWN = "keydown",
     KEY_UP = "keyup"

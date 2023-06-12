@@ -62,15 +62,18 @@ export const getStackedAvatarPositions = (
   switch (numOfItems) {
     case 2: {
       if (index === 1) return { left: avatarWrapperSize * 0.5, top: avatarWrapperSize * 0.5 };
+      return { left: 0, top: 0 };
     }
     case 3: {
       if (index === 1) return { left: avatarSize * 0.75, top: avatarSize * 0.5 };
       if (index === 2) return { left: 0, top: avatarSize };
+      return { left: 0, top: 0 };
     }
     case 4: {
       if (index === 1) return { left: avatarWrapperSize, top: 0 };
       if (index === 2) return { left: 0, top: avatarWrapperSize };
       if (index === 3) return { left: avatarWrapperSize, top: avatarWrapperSize }; // Position of the More label
+      return { left: 0, top: 0 };
     }
     case 1:
     default:

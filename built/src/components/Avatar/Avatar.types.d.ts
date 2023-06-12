@@ -39,6 +39,7 @@ interface BaseAvatarProps {
     onClick?: (e: React.MouseEvent) => void;
 }
 export type AvatarProps = RequireOnlyOne<BaseAvatarProps, 'label' | 'icon'>;
+export type AvatarComponent = React.ReactElement<AvatarProps>;
 export type SizeStyles = {
     avatarSize: number;
     borderRadius: number;

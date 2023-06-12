@@ -1,14 +1,15 @@
-import { AvatarItem, FacepileSize, StackedAvatarPosition } from "./Facepile.constants";
+import { AvatarComponent } from '../Avatar';
+import { FacepileSize, StackedAvatarPosition } from './Facepile.constants';
 /**
  * Used to sort Avatar arrays by putting active Avatars before inactive Avatars
  * Used for inline Facepiles
  */
-export declare function compareInlineAvatars(firstItem: AvatarItem, secondItem: AvatarItem): 0 | 1 | -1;
+export declare function compareInlineAvatars(firstItem: AvatarComponent, secondItem: AvatarComponent): 0 | 1 | -1;
 /**
  * Used to sort Avatar arrays by putting inactive Avatars before active Avatars
  * Used for stacked Facepiles
  */
-export declare function compareStackedAvatars(firstItem: AvatarItem, secondItem: AvatarItem): 0 | 1 | -1;
+export declare function compareStackedAvatars(firstItem: AvatarComponent, secondItem: AvatarComponent): 0 | 1 | -1;
 /**
  * Returns a stacked Facepile's dimensions
  * @param {number} numOfItems - Number of visible items including the More label

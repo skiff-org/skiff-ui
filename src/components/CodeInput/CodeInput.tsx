@@ -56,12 +56,6 @@ const CodeInputField = styled.input<{
     `}
 `;
 
-// Prevents a layout shift
-const ErrorContainer = styled.div`
-  height: 16px;
-  margin-bottom: 12px;
-`;
-
 /** A component that renders a set of square text fields for either numeric or text code inputs. */
 const CodeInput: React.FC<CodeInputProps> = ({
   codeLength,

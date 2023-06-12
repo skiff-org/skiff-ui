@@ -1,4 +1,4 @@
 export { default as Button } from './TextButton/TextButton';
-export { ButtonProps } from './TextButton/TextButton.constants';
+export { ButtonComponent } from './TextButton/TextButton.types';
 export { default as IconButton } from './IconButton/IconButton';
 //# sourceMappingURL=index.d.ts.map

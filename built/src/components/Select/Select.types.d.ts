@@ -1,4 +1,4 @@
-import { Size, ThemeMode } from '../../types';
+import { FilledVariant, Size, ThemeMode } from '../../types';
 import { Color } from '../../utils/colorUtils';
 import { DropdownItemComponent } from '../DropdownItem';
 export type SelectSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
@@ -9,14 +9,12 @@ export interface SelectProps {
     dataTest?: string;
     /** Controls the disabled state */
     disabled?: boolean;
-    /** Whether it's a filled field or a ghost field */
-    filled?: boolean;
     /** Overrides curr theme */
     forceTheme?: ThemeMode;
     /** Ghost select text and icon color */
     ghostColor?: Color;
     /** Max dropdown height */
-    maxHeight?: number;
+    maxHeight?: number | string;
     /** For a controlled Select component */
     menuControls?: {
         isOpen: boolean;
@@ -29,9 +27,11 @@ export interface SelectProps {
     /** Current selected value */
     value?: string;
     /** Custom width */
-    width?: number;
+    width?: number | string;
     /** Whether the select should take up the full width of its container */
     fullWidth?: boolean;
+    /** Filled or unfilled */
+    variant?: FilledVariant;
     /** Custom z-index */
     zIndex?: number;
 }

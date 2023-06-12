@@ -1,3 +1,2 @@
-export { AppThemeProvider, useTheme } from "./AppThemeProvider";
-export * from "./theme";
+export * from './theme';
 //# sourceMappingURL=index.d.ts.map

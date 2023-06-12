@@ -39,7 +39,7 @@ const esbuildConf = (format) => ({
     'src/components/Button/index.ts',
     'src/components/Icons/index.ts',
     'src/components/CodeInput/index.ts',
-    'src/components/CustomCircularProgress/index.ts'
+    'src/components/CircularProgress/index.ts'
   ],
   splitting: format === 'esm',
   bundle: true,

@@ -10,7 +10,7 @@ export type AccentColor = (typeof ACCENT_COLORS)[number];
 export type TextColor = (typeof TEXT_COLORS)[number];
 export type Color = TextColor | AccentColor;
 export declare const isAccentColor: (color: Color) => color is "green" | "orange" | "red" | "yellow" | "pink" | "dark-blue" | "blue";
-export declare const isTextColor: (color: Color) => color is "primary" | "secondary" | "tertiary" | "destructive" | "link" | "disabled" | "inverse" | "white" | "black";
+export declare const isTextColor: (color: Color) => color is "link" | "disabled" | "primary" | "secondary" | "tertiary" | "destructive" | "inverse" | "white" | "black";
 export declare const isColor: (color: string) => color is "green" | "orange" | "red" | "yellow" | "pink" | "dark-blue" | "blue";
 /** [primary, secondary, accent] */
 type ColorOptions = [string, string, AccentColor];
@@ -42,5 +42,13 @@ export declare const HSLToRGB: (h: number, s: number, l: number) => {
  * Check if color is hard to read with darkmode background
  */
 export declare const isHardToRead: (textColor: RGBValue, background: RGBValue) => boolean;
+/**
+ * Returns single-tone text and background colors
+ * @param {Color | undefined} color
+ * @param {boolean | undefined} disabled
+ * @param {string | undefined} label
+ * @param {ThemeMode | undefined} forceTheme
+ */
+export declare const getTextAndBgColors: (color?: Color, disabled?: boolean, label?: string, forceTheme?: ThemeMode) => [Color, string];
 export {};
 //# sourceMappingURL=colorUtils.d.ts.map

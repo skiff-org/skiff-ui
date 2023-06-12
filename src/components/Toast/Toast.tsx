@@ -1,4 +1,3 @@
-import { Link } from '@mui/material';
 import { motion, PanInfo, useAnimation } from 'framer-motion';
 import React, { ForwardedRef, useCallback, useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -233,7 +232,7 @@ const Toast = (
     </ToastRoot>
   );
 
-  return !!redirectTo ? <Link href={redirectTo}>{renderToast()}</Link> : renderToast();
+  return !!redirectTo ? <a href={redirectTo}>{renderToast()}</a> : renderToast();
 };
 
 export default React.forwardRef<HTMLDivElement, ToastWithKeyProps>(Toast);

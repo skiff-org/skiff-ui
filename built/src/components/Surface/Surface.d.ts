@@ -6,9 +6,9 @@ export declare const StyledSurface: import("styled-components").StyledComponent<
     level: 'l0' | 'l1' | 'l2' | 'l3';
     size: 'xsmall' | 'small' | 'normal' | 'large' | 'xlarge' | 'xxlarge' | 'full-width' | 'full-screen';
     forceTheme?: ThemeMode | undefined;
-    $maxWidth?: number | undefined;
-    $minWidth?: number | undefined;
-    $width?: number | undefined;
+    $maxWidth?: string | number | undefined;
+    $minWidth?: string | number | undefined;
+    $width?: string | number | undefined;
 }, never>;
 export interface SurfaceProps {
     /** The elevation of the Surface */
@@ -49,9 +49,9 @@ export interface SurfaceProps {
     clickOutsideWebListener?: MouseClickEvents;
     /** Custom height of surface wrapper (e.g. for custom vertical alignment) */
     customWrapperHeight?: string | number;
-    width?: number;
-    minWidth?: number;
-    maxWidth?: number;
+    width?: number | string;
+    minWidth?: number | string;
+    maxWidth?: number | string;
 }
 declare const _default: React.ForwardRefExoticComponent<SurfaceProps & React.RefAttributes<HTMLDivElement>>;
 export default _default;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ThemeMode } from '../../../types';
 import Typography from '../../Typography';
 import { InputFieldSize } from '../InputField.types';

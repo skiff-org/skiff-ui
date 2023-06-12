@@ -1,5 +1,5 @@
-import { ThemeMode } from "../../../types";
-import { InputFieldSize } from "../InputField.types";
+import { ThemeMode } from '../../../types';
+import { InputFieldSize } from '../InputField.types';
 interface SubTextProps {
     size: InputFieldSize;
     errorMsg?: string;

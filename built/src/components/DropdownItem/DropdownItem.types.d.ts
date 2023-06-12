@@ -17,6 +17,7 @@ export interface DropdownItemProps {
     /** Controls the DropdownItem's disabled state */
     disabled?: boolean;
     endElement?: JSX.Element;
+    hideDivider?: boolean;
     /**
      * Controls the DropdownItem's hover state
      * Used for keyboard navigation
@@ -34,7 +35,6 @@ export interface DropdownItemProps {
     value?: string;
     onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void | Promise<void>;
     onHover?: () => void;
-    isLast?: boolean;
 }
 export type DropdownItemComponent = React.ReactElement<DropdownItemProps>;
 //# sourceMappingURL=DropdownItem.types.d.ts.map

@@ -1,6 +1,6 @@
-import { Alignment } from "../../types";
-import { Color } from "../../utils/colorUtils";
-import { TypographyOverflow, TypographySize, TypographyWeight } from "./Typography.constants";
+import { Alignment } from '../../types';
+import { Color } from '../../utils/colorUtils';
+import { TypographyOverflow, TypographySize, TypographyWeight } from './Typography.constants';
 /** Alignment-specific styles */
 export declare const ALIGNMENT_CSS: import("styled-components").FlattenInterpolation<import("styled-components").ThemedStyledProps<{
     $align: Alignment;
@@ -27,10 +27,10 @@ export declare const TEXT_CSS: import("styled-components").FlattenInterpolation<
     $transition?: string | undefined;
 }, any>>;
 /** Width-specific styles */
-export declare const WIDTH_CSS: import("styled-components").FlattenInterpolation<import("styled-components").ThemedStyledProps<{
+export declare const WIDTH_CSS: ({ $align, $maxWidth, $minWidth, $width }: {
     $align: Alignment;
-    $maxWidth?: string | undefined;
-    $minWidth?: string | undefined;
-    $width?: string | undefined;
-}, any>>;
+    $maxWidth?: string | number | undefined;
+    $minWidth?: string | number | undefined;
+    $width?: string | number | undefined;
+}) => import("styled-components").FlattenSimpleInterpolation;
 //# sourceMappingURL=Typography.styles.d.ts.map

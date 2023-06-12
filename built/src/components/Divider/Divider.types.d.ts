@@ -11,10 +11,10 @@ export interface DividerProps {
     /** Forced theme */
     forceTheme?: ThemeMode;
     /** Custom height */
-    height?: string;
+    height?: number | string;
     /** Whether it's a horizontal or a vertical divider */
     type?: DividerType;
     /** Custom width */
-    width?: string;
+    width?: number | string;
 }
 //# sourceMappingURL=Divider.types.d.ts.map

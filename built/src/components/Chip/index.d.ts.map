@@ -1,1 +1,1 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/components/Chip/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,SAAS,EAAE,YAAY,EAAE,MAAM,QAAQ,CAAC"}
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/components/Chip/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,QAAQ,CAAC;AACjC,OAAO,EAAE,uBAAuB,EAAE,MAAM,kBAAkB,CAAC;AAC3D,OAAO,EAAE,QAAQ,EAAE,MAAM,cAAc,CAAC"}

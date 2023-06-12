@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { isMobile } from 'react-device-detect';
 import styled from 'styled-components';
 
 import { FilledVariant, Size } from '../../types';
-import Drawer, { DrawerGroup } from '../Drawer';
 import Dropdown from '../Dropdown';
 import { Icon } from '../Icons';
 import IconText from '../IconText/IconText';
@@ -107,24 +105,19 @@ export default function Select({
       });
     });
 
-  const renderOptionMenu = () =>
-    isMobile ? (
-      <Drawer show={isOpen} hideDrawer={toggleOpen} maxHeight={maxHeight}>
-        <DrawerGroup>{renderSelectItems()}</DrawerGroup>
-      </Drawer>
-    ) : (
-      <Dropdown
-        portal
-        buttonRef={selectTriggerRef}
-        setShowDropdown={() => toggleOpen()}
-        showDropdown={isOpen}
-        fullWidth={fullWidth}
-        maxHeight={maxHeight}
-        zIndex={zIndex}
-      >
-        {renderSelectItems()}
-      </Dropdown>
-    );
+  const renderOptionMenu = () => (
+    <Dropdown
+      portal
+      buttonRef={selectTriggerRef}
+      setShowDropdown={() => toggleOpen()}
+      showDropdown={isOpen}
+      fullWidth={fullWidth}
+      maxHeight={maxHeight}
+      zIndex={zIndex}
+    >
+      {renderSelectItems()}
+    </Dropdown>
+  );
 
   return (
     <SelectContainer $width={width}>

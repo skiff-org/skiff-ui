@@ -1,27 +1,26 @@
-export { default as Avatar, AvatarProps, getAvatarIconOrLabel } from './components/Avatar';
-export { BANNER_HEIGHT, default as Banner, BannerProps } from './components/Banner';
+export { AvatarProps, default as Avatar, getAvatarIconOrLabel } from './components/Avatar';
+export { BannerProps, BANNER_HEIGHT, default as Banner } from './components/Banner';
 export { Button, ButtonComponent, IconButton } from './components/Button';
-export { default as ButtonGroup, ButtonGroupProps } from './components/ButtonGroup';
+export { ButtonGroupProps, default as ButtonGroup } from './components/ButtonGroup';
 export { default as ButtonGroupItem } from './components/ButtonGroupItem';
-export { default as Chip, ChipSize, CHIP_END_ICON_DATA_TEST } from './components/Chip';
-export { default as CodeInput, CodeInputType } from './components/CodeInput';
+export { ChipSize, CHIP_END_ICON_DATA_TEST, default as Chip } from './components/Chip';
 export {
   AbsolutelyCentered,
-  default as CircularProgress,
   CircularProgressSize,
-  RelativelyCentered,
-  PROGRESS_SIZE
+  default as CircularProgress,
+  PROGRESS_SIZE,
+  RelativelyCentered
 } from './components/CircularProgress';
+export { CodeInputType, default as CodeInput } from './components/CodeInput';
 export { default as Dialog, DialogTypes } from './components/Dialog';
 export { default as Divider, DividerProps, DividerType } from './components/Divider';
-export { default as Drawer, DrawerGroup, DRAWER_PADDING_LEFT_RIGHT } from './components/Drawer';
 export { default as Dropdown, DROPDOWN_CALLER_ID } from './components/Dropdown';
 export { default as DropdownItem, DropdownItemColor, DropdownItemComponent } from './components/DropdownItem';
 export { default as DropdownSubmenu } from './components/DropdownSubmenu';
 export { default as Facepile } from './components/Facepile';
-export { IconComponent, default as IconText, IconTextProps, IconTextSize } from './components/IconText';
-export { Icon, default as Icons, IconColor, isValidIcon } from './components/Icons';
+export { default as Icons, Icon, IconColor, isValidIcon } from './components/Icons';
 export type { IconProps } from './components/Icons';
+export { default as IconText, IconComponent, IconTextProps, IconTextSize } from './components/IconText';
 export {
   InputComponent,
   InputField,
@@ -36,18 +35,18 @@ export { default as Portal } from './components/Portal';
 export { default as Select } from './components/Select';
 export { default as Skeleton, SkeletonProps } from './components/Skeleton';
 export {
+  default as Surface,
   DRAWER_CLASSNAME,
   DROPDOWN_CALLER_CLASSNAME,
   ENABLE_OUTSIDE_CLICKS_CLASSNAME,
   MODAL_AND_DROPDOWN_SELECTOR,
   MODAL_CLASSNAME,
   SCRIM_CLASSNAME,
-  SURFACE_CLASSNAME,
-  default as Surface,
-  SurfaceProps
+  SurfaceProps,
+  SURFACE_CLASSNAME
 } from './components/Surface';
 export { default as Tabs, TabsSize } from './components/Tabs';
-export { TOAST_DEFAULT_DURATION, default as Toast, ToastProps } from './components/Toast';
+export { default as Toast, ToastProps, TOAST_DEFAULT_DURATION } from './components/Toast';
 export { default as Toggle } from './components/Toggle';
 export {
   default as Tooltip,

@@ -189,6 +189,7 @@ declare const theme: {
         readonly '--skiff-code-mark-bg': `rgba(${string}, ${string})`;
         readonly '--bg-cell-unread': `rgb(${string})`;
         readonly '--status-bar-color': `linear-gradient(0deg, rgba(${string}, ${string}), rgba(${string}, ${string})), rgb(${string})`;
+        readonly '--illustration-fill': `rgb(${string})`;
         readonly '--primary-button-hover-shadow': string;
         readonly '--primary-button-hover-inset-shadow': string;
         readonly '--scrollbar-active-gray': string;
@@ -373,6 +374,7 @@ declare const theme: {
         readonly '--skiff-code-mark-bg': `rgba(${string}, ${string})`;
         readonly '--bg-cell-unread': `linear-gradient(0deg, rgba(${string}, ${string}), rgba(${string}, ${string})), rgb(${string})`;
         readonly '--status-bar-color': `linear-gradient(0deg, rgba(${string}, ${string}), rgba(${string}, ${string})), rgb(${string})`;
+        readonly '--illustration-fill': `rgb(${string})`;
         readonly '--primary-button-hover-shadow': string;
         readonly '--primary-button-hover-inset-shadow': string;
         readonly '--scrollbar-active-gray': string;
