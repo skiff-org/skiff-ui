@@ -1,20 +1,18 @@
-import { DROPDOWN_GAP } from "../Surface";
+import { DROPDOWN_GAP } from '../Surface';
 
 /**
  * Returns whether the dropdown overflows in x
  * @param x - left
  * @param width - dropdown width
  */
-export const overflowsInX = (x: number, width: number) =>
-  x + width + DROPDOWN_GAP > window.innerWidth;
+export const overflowsInX = (x: number, width: number) => x + width + DROPDOWN_GAP > window.innerWidth;
 
 /**
  * Returns whether the dropdown overflows in y
  * @param y - top
  * @param height - dropdown height
  */
-export const overflowsInY = (y: number, height: number) =>
-  y + height + DROPDOWN_GAP > window.innerHeight;
+export const overflowsInY = (y: number, height: number) => y + height + DROPDOWN_GAP > window.innerHeight;
 
 /**
  * Returns absolute position for portal dropdowns
@@ -39,9 +37,7 @@ export const getPortalPosition = (
   overflowY: boolean
 ) => {
   const left = overflowX ? anchorRightEdge - dropdownWidth : anchorLeftEdge;
-  const top = overflowY
-    ? anchorTopEdge - dropdownHeight - gapFromAnchor
-    : anchorTopEdge + anchorHeight + gapFromAnchor;
+  const top = overflowY ? anchorTopEdge - dropdownHeight - gapFromAnchor : anchorTopEdge + anchorHeight + gapFromAnchor;
   return { left, top };
 };
 
@@ -51,11 +47,7 @@ export const getPortalPosition = (
  * @param dropdownWidth
  * @param overflowX
  */
-export const getNonPortalPosition = (
-  anchorWidth: number,
-  dropdownWidth: number,
-  overflowX: boolean
-) => {
+export const getNonPortalPosition = (anchorWidth: number, dropdownWidth: number, overflowX: boolean) => {
   const right = overflowX ? dropdownWidth - anchorWidth : undefined;
   return { right };
 };

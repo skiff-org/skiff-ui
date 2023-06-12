@@ -1,13 +1,9 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
-import { Alignment } from "../../types";
-import { Color } from "../../utils/colorUtils";
+import { Alignment } from '../../types';
+import { Color } from '../../utils/colorUtils';
 
-import {
-  TypographyOverflow,
-  TypographySize,
-  TypographyWeight,
-} from "./Typography.constants";
+import { TypographyOverflow, TypographySize, TypographyWeight } from './Typography.constants';
 
 /** Alignment-specific styles */
 export const ALIGNMENT_CSS = css`
@@ -19,16 +15,10 @@ export const ALIGNMENT_CSS = css`
 
 /** Overflow-specific styles */
 export const OVERFLOW_CSS = css`
-  ${({
-    $overflow,
-    $wrap,
-  }: {
-    $overflow: TypographyOverflow;
-    $wrap: boolean;
-  }) => `
+  ${({ $overflow, $wrap }: { $overflow: TypographyOverflow; $wrap: boolean }) => `
     text-overflow: ellipsis;
     overflow: ${$overflow};
-    white-space: ${$wrap ? "normal" : "nowrap"};
+    white-space: ${$wrap ? 'normal' : 'nowrap'};
     `}
 `;
 
@@ -97,7 +87,7 @@ export const TEXT_CSS = css`
     $mono,
     $size,
     $weight,
-    $transition,
+    $transition
   }: {
     $capitalize: boolean;
     $uppercase: boolean;
@@ -115,10 +105,8 @@ export const TEXT_CSS = css`
           ? "Skiff Mono, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
           : "Skiff Sans Text, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
       };
-      text-transform: ${
-        $capitalize ? "capitalize" : $uppercase ? "uppercase" : ""
-      };
-      transition: ${$transition ?? ""};
+      text-transform: ${$capitalize ? 'capitalize' : $uppercase ? 'uppercase' : ''};
+      transition: ${$transition ?? ''};
 
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
@@ -157,20 +145,23 @@ export const TEXT_CSS = css`
 `;
 
 /** Width-specific styles */
-export const WIDTH_CSS = css`
-  ${({
-    $align,
-    $maxWidth,
-    $minWidth,
-    $width,
-  }: {
-    $align: Alignment;
-    $maxWidth?: string;
-    $minWidth?: string;
-    $width?: string;
-  }) => `
-    width: ${$width ?? ($align === Alignment.INHERIT ? "fit-content" : "100%")};
-    max-width: ${$maxWidth ?? "100%"};
-    min-width: ${$minWidth ?? "0px"};
-  `}
-`;
+export const WIDTH_CSS = ({
+  $align,
+  $maxWidth,
+  $minWidth,
+  $width
+}: {
+  $align: Alignment;
+  $maxWidth?: number | string;
+  $minWidth?: number | string;
+  $width?: number | string;
+}) => {
+  const customWidth = $width ? (typeof $width === 'string' ? $width : `${$width}px`) : undefined;
+  const customMaxWidth = $maxWidth ? (typeof $maxWidth === 'string' ? $maxWidth : `${$maxWidth}px`) : undefined;
+  const customMinWidth = $minWidth ? (typeof $minWidth === 'string' ? $minWidth : `${$minWidth}px`) : undefined;
+  return css`
+    width: ${customWidth ?? ($align === Alignment.INHERIT ? 'fit-content' : '100%')};
+    max-width: ${customMaxWidth ?? '100%'};
+    min-width: ${customMinWidth ?? '0px'};
+  `;
+};

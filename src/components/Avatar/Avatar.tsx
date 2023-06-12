@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 
 import { SQUARE_CSS } from '../../styles';
 import { Size, ThemeMode } from '../../types';
-import { getAccentColorValues, getThemedColor } from '../../utils/colorUtils';
+import { getAccentColorValues, getTextAndBgColors, getThemedColor } from '../../utils/colorUtils';
 import Icons from '../Icons';
 import Typography, { TypographyWeight } from '../Typography';
 
 import { FULL_RADIUS, SIZE_STYLES } from './Avatar.constants';
 import { AvatarProps } from './Avatar.types';
-import { getAvatarColors, stripEmojis } from './Avatar.utils';
+import { stripEmojis } from './Avatar.utils';
 
 const AvatarContainer = styled.div<{
   $active: boolean;
@@ -121,7 +121,7 @@ const Avatar: React.FC<AvatarProps> = ({
   style,
   onClick = undefined
 }) => {
-  const [avatarColorName, avatarSecondaryColor] = getAvatarColors(color, disabled, label, forceTheme);
+  const [avatarColorName, avatarSecondaryColor] = getTextAndBgColors(color, disabled, label, forceTheme);
   const [badgePrimaryColor] = getAccentColorValues(badgeColor, forceTheme);
 
   const { avatarSize, borderRadius, borderWidth, iconSize, typographySize } = SIZE_STYLES[size];

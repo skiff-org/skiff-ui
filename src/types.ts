@@ -6,6 +6,11 @@ export enum Alignment {
   RIGHT = 'right'
 }
 
+export enum FilledVariant {
+  FILLED = 'filled',
+  UNFILLED = 'unfilled'
+}
+
 export enum KeyboardEvents {
   KEY_DOWN = 'keydown',
   KEY_UP = 'keyup'

@@ -205,3 +205,40 @@ export const isHardToRead = (textColor: RGBValue, background: RGBValue) => {
   // Algorithm to check if color is dark or not https://www.w3.org/TR/AERT/#color-contrast
   return colorBrightness < COLOR_BRIGHTNESS_THRESHOLD && colorDifference < COLOR_DIFF_THRESHOLD;
 };
+
+/**
+ * Returns single-tone text and background colors
+ * @param {Color | undefined} color
+ * @param {boolean | undefined} disabled
+ * @param {string | undefined} label
+ * @param {ThemeMode | undefined} forceTheme
+ */
+export const getTextAndBgColors = (
+  color?: Color,
+  disabled?: boolean,
+  label?: string,
+  forceTheme?: ThemeMode
+): [Color, string] => {
+  if (disabled) {
+    const colorName = 'secondary';
+    const secondaryColor = 'var(--bg-overlay-secondary)';
+    const themedSecondaryColor = getThemedColor(secondaryColor, forceTheme);
+    return [colorName, themedSecondaryColor];
+  }
+
+  if (!color || (!isAccentColor(color) && !isTextColor(color))) {
+    const [, secondaryColor, colorName] = stringToColor(label ?? '', forceTheme);
+    return [colorName, secondaryColor];
+  }
+
+  if (isAccentColor(color)) {
+    // Color passed is an accent color
+    const [, secondaryColor, colorName] = getAccentColorValues(color, forceTheme);
+    return [colorName, secondaryColor];
+  } else {
+    // Color passed is a text color
+    const colorName = color;
+    const secondaryColor = 'var(--bg-overlay-tertiary)';
+    return [colorName, secondaryColor];
+  }
+};

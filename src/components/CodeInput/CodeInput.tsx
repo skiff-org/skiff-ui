@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import styled, { css } from "styled-components";
+import React, { useEffect, useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
 
-import { ThemeMode } from "../../types";
-import { getThemedColor } from "../../utils/colorUtils";
-import Typography, { TypographySize } from "../Typography";
+import { ThemeMode } from '../../types';
+import { getThemedColor } from '../../utils/colorUtils';
+import Typography, { TypographySize } from '../Typography';
 
-import { CodeInputProps, CodeInputType } from "./CodeInput.constants";
-import { isValid, padEnd } from "./CodeInput.utils";
+import { CodeInputProps, CodeInputType } from './CodeInput.constants';
+import { isValid, padEnd } from './CodeInput.utils';
 
 const CodeInputContainer = styled.div`
   display: flex;
@@ -28,13 +28,12 @@ const CodeInputField = styled.input<{
   text-align: center;
   box-sizing: border-box;
   border-radius: 12px;
-  ${(props) => !props.$active && "pointer-events: none;"}
-  background: ${(props) =>
-    getThemedColor("var(--bg-field-default)", props.$forceTheme)};
+  ${(props) => !props.$active && 'pointer-events: none;'}
+  background: ${(props) => getThemedColor('var(--bg-field-default)', props.$forceTheme)};
   border: ${(props) => {
-    let color = "transparent"; // Prevents a layout shift
-    if (props.$active) color = "var(--border-active)";
-    if (props.$error) color = "var(--border-destructive)";
+    let color = 'transparent'; // Prevents a layout shift
+    if (props.$active) color = 'var(--border-active)';
+    if (props.$error) color = 'var(--border-destructive)';
     return `1px solid ${getThemedColor(color, props.$forceTheme)};`;
   }}
 
@@ -42,8 +41,7 @@ const CodeInputField = styled.input<{
   font-family: 'Skiff Sans Text', sans-serif;
   font-size: 19px;
   line-height: 130%;
-  color: ${(props) =>
-    getThemedColor("var(--text-secondary)", props.$forceTheme)};
+  color: ${(props) => getThemedColor('var(--text-secondary)', props.$forceTheme)};
   -moz-appearance: textfield;
 
   ${(props) =>
@@ -58,6 +56,12 @@ const CodeInputField = styled.input<{
     `}
 `;
 
+// Prevents a layout shift
+const ErrorContainer = styled.div`
+  height: 16px;
+  margin-bottom: 12px;
+`;
+
 /** A component that renders a set of square text fields for either numeric or text code inputs. */
 const CodeInput: React.FC<CodeInputProps> = ({
   codeLength,
@@ -68,7 +72,7 @@ const CodeInput: React.FC<CodeInputProps> = ({
   onChange,
   onSubmit,
   forceTheme,
-  type = CodeInputType.NUMBER,
+  type = CodeInputType.NUMBER
 }) => {
   const endIndex = codeLength - 1;
   // Carries the cursor index, which is always one index ahead of the last entered value
@@ -82,9 +86,7 @@ const CodeInput: React.FC<CodeInputProps> = ({
 
   // Moves the cursor and calls onChange on the new code values if they are valid
   const onUpdate = (newValues: string) => {
-    const allAreValid = newValues
-      .split("")
-      .every((char) => isValid(type, char));
+    const allAreValid = newValues.split('').every((char) => isValid(type, char));
     // Do nothing if there are invalid values
     if (!allAreValid) return;
 
@@ -103,30 +105,28 @@ const CodeInput: React.FC<CodeInputProps> = ({
     // we delete the last entry by clearing the value in the index that precedes the cursor index
     const prevIndex = focusedFieldIndex - 1;
     const newValues = codeValues;
-    newValues.splice(prevIndex, 1, "");
-    onUpdate(newValues.join(""));
+    newValues.splice(prevIndex, 1, '');
+    onUpdate(newValues.join(''));
   };
 
   const handlePaste = (e: React.ClipboardEvent, index: number) => {
     // Get pasted values
-    const pastedValues = e.clipboardData.getData("text/plain").split("");
+    const pastedValues = e.clipboardData.getData('text/plain').split('');
     // Filter out invalid characters
-    const validPastedValues = pastedValues.filter((char) =>
-      isValid(type, char)
-    );
+    const validPastedValues = pastedValues.filter((char) => isValid(type, char));
 
     let newValues = codeValues;
     // Add pasted values to the existing code values
     newValues.splice(index, validPastedValues.length, ...validPastedValues);
     // Trim to maximal code length
     newValues = newValues.slice(0, codeLength);
-    onUpdate(newValues.join(""));
+    onUpdate(newValues.join(''));
   };
 
   // onChange is necessary to detect auto-filled codes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Concatenate the input to the existing code values
-    const newValue = codeValues.join("") + e.target.value;
+    const newValue = codeValues.join('') + e.target.value;
     // Trim to maximal code length
     const trimmedValue = newValue.substring(0, codeLength);
     onUpdate(trimmedValue);
@@ -143,17 +143,17 @@ const CodeInput: React.FC<CodeInputProps> = ({
         {codeValues.map((val: string, index: number) => (
           <CodeInputField
             type={type}
-            inputMode={type === CodeInputType.NUMBER ? "numeric" : "text"}
+            inputMode={type === CodeInputType.NUMBER ? 'numeric' : 'text'}
             autoFocus={index === focusedFieldIndex}
             value={val}
             onBlur={() => inputRef.current[focusedFieldIndex]?.focus()}
             onChange={handleChange}
             // Backspace only works with onKeyDown
             onKeyDown={(e: React.KeyboardEvent) => {
-              if (e.key === "Backspace") onDelete();
+              if (e.key === 'Backspace') onDelete();
             }}
             onKeyPress={(e: React.KeyboardEvent) => {
-              if (e.key === "Enter") {
+              if (e.key === 'Enter') {
                 e.stopPropagation();
                 void onSubmit();
               }
@@ -177,12 +177,7 @@ const CodeInput: React.FC<CodeInputProps> = ({
       </CodeInputContainer>
       {errorMsg && (
         <div style={{ minHeight: 4 }}>
-          <Typography
-            forceTheme={forceTheme}
-            color="destructive"
-            size={TypographySize.SMALL}
-            wrap
-          >
+          <Typography forceTheme={forceTheme} color='destructive' size={TypographySize.SMALL} wrap>
             {errorMsg}
           </Typography>
         </div>

@@ -2,38 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Size, ThemeMode } from '../../types';
-import { Color, getThemedColor } from '../../utils/colorUtils';
-import { getAvatarColors } from '../Avatar/Avatar.utils';
-import Icons, { Icon } from '../Icons';
+import { getTextAndBgColors, getThemedColor } from '../../utils/colorUtils';
+import Icons from '../Icons';
 import Typography, { TypographySize } from '../Typography';
 
-export interface MonoTagProps {
-  label: string;
-  // single tone color for text and bg
-  color?: Color;
-  // override individual colors
-  bgColor?: string;
-  textColor?: Color;
-  forceTheme?: ThemeMode;
-  icon?: Icon;
-  forceBoxShadowTheme?: ThemeMode;
-}
+import { MonoTagProps } from './MonoTag.types';
 
-const Tag = styled.div<{ $bgColor?: string; $forceBoxShadowTheme?: ThemeMode }>`
+const Tag = styled.div<{ $bgColor: string; $forceBoxShadowTheme?: ThemeMode; $forceTheme?: ThemeMode }>`
   text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   width: fit-content;
-  padding: 1px 4px;
+  padding: 2px 6px;
   gap: 4px;
-  background: ${({ $bgColor }) => $bgColor};
   box-sizing: border-box;
-  border: 1px solid
-    ${({ $forceBoxShadowTheme, $bgColor }) =>
-      getThemedColor($bgColor || 'var(--border-tertiary)', $forceBoxShadowTheme)};
-  border-bottom-width: 2px;
+
+  ${({ $bgColor, $forceBoxShadowTheme, $forceTheme }) => `
+    background: ${getThemedColor($bgColor, $forceTheme)};
+    border: 1px solid ${getThemedColor($bgColor, $forceBoxShadowTheme ?? $forceTheme)};
+  `}
+
   border-radius: 4px;
+  border-bottom-width: 2px;
 `;
 
 const MonoTag: React.FC<MonoTagProps> = ({
@@ -42,22 +33,17 @@ const MonoTag: React.FC<MonoTagProps> = ({
   forceBoxShadowTheme,
   forceTheme,
   icon,
-  textColor,
-  bgColor
+  textColor: customTextColor,
+  bgColor: customBgColor
 }: MonoTagProps) => {
-  let typographyColor = textColor;
-  let backgroundColor = bgColor;
-
-  if (!!color) {
-    const [textColor, bgColor] = getAvatarColors(color, false, label, forceTheme);
-    typographyColor = textColor;
-    backgroundColor = getThemedColor(bgColor, forceTheme);
-  }
+  const [defaultTextColor, defaultBgColor] = getTextAndBgColors(color, false, label, forceTheme);
+  const textColor = customTextColor ?? defaultTextColor;
+  const bgColor = customBgColor ?? defaultBgColor;
 
   return (
-    <Tag $bgColor={backgroundColor} $forceBoxShadowTheme={forceBoxShadowTheme}>
-      {icon && <Icons size={Size.SMALL} icon={icon} color={typographyColor} />}
-      <Typography color={typographyColor} mono size={TypographySize.SMALL} forceTheme={forceTheme}>
+    <Tag $bgColor={bgColor} $forceBoxShadowTheme={forceBoxShadowTheme} $forceTheme={forceTheme}>
+      {icon && <Icons size={Size.SMALL} icon={icon} color={textColor} forceTheme={forceTheme} />}
+      <Typography color={textColor} mono size={TypographySize.SMALL} forceTheme={forceTheme}>
         {label}
       </Typography>
     </Tag>

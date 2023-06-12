@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Size, ThemeMode } from '../../types';
+import { FilledVariant, Size, ThemeMode } from '../../types';
 import Icons, { Icon } from '../Icons';
 import KeyCodeSequence from '../KeyCodeSequence';
 import Tooltip, { TooltipContent, TooltipTrigger } from '../Tooltip';
@@ -21,13 +21,12 @@ const TooltipWithShortcut = styled.div`
 `;
 
 const IconTextContainer = styled.div<{
-  $filled: boolean;
-  $isActive: boolean;
   $isDestructive: boolean;
   $isDisabled: boolean;
   $isHovering: boolean;
   $isClickable: boolean;
   $size: IconTextSize;
+  $variant: FilledVariant;
   $forceTheme?: ThemeMode;
 }>`
   display: flex;
@@ -46,21 +45,22 @@ const IconTextContainer = styled.div<{
 const IconText = (
   {
     label,
-    active,
+    className,
     disabled = false,
     disableHover,
     startIcon,
+    style,
     endIcon,
     weight = TypographyWeight.MEDIUM,
     size = Size.MEDIUM,
     color,
     onClick,
     iconColor,
-    forceIconSize,
     dataTest,
     forceTheme,
     tooltip,
-    filled = false,
+    variant = FilledVariant.UNFILLED,
+    id,
     ...typographyProps
   }: IconTextProps,
   ref: React.ForwardedRef<HTMLDivElement>
@@ -71,9 +71,9 @@ const IconText = (
   const hasLabel = !!label && (typeof label !== 'string' || !!label.length);
 
   const typographySize = ICON_TEXT_TYPOGRAPHY_SIZE[size];
-  const iconSize = forceIconSize || ICON_TEXT_ICON_SIZE[size];
-  const calculatedTextColor = getTextColor(filled, !!active, isClickable, disabled, isHovering, color);
-  const calculatedIconColor = getIconColor(filled, !!active, isClickable, disabled, isHovering, iconColor ?? color);
+  const iconSize = ICON_TEXT_ICON_SIZE[size];
+  const calculatedTextColor = getTextColor(isClickable, disabled, isHovering, variant, color);
+  const calculatedIconColor = getIconColor(isClickable, disabled, isHovering, variant, iconColor ?? color);
 
   const onMouseOver = () => {
     if (!isClickable || isHovering || disableHover || disabled) return;
@@ -113,17 +113,19 @@ const IconText = (
       <TooltipContent>{!disabled ? renderTooltipContent() : ''}</TooltipContent>
       <TooltipTrigger>
         <IconTextContainer
+          className={className}
           data-test={dataTest}
+          style={style}
           onClick={!disabled ? onClick : undefined}
           ref={ref}
           onMouseOver={onMouseOver}
           onMouseLeave={onMouseLeave}
-          $isActive={!!active}
           $isDisabled={disabled}
           $isHovering={isHovering}
           $isClickable={isClickable}
-          $filled={filled}
+          $variant={variant}
           $size={size}
+          id={id}
           $forceTheme={forceTheme}
           $isDestructive={color === 'destructive'}
         >

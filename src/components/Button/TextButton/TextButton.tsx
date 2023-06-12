@@ -2,16 +2,18 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 import { Size, ThemeMode, Type } from '../../../types';
-import CustomCircularProgress from '../../CustomCircularProgress/CustomCircularProgress';
-import Icons from '../../Icons';
+import CircularProgress from '../../CircularProgress/CircularProgress';
+import Icons, { Icon } from '../../Icons';
+import { IconComponent } from '../../IconText';
 import Tooltip from '../../Tooltip';
 import { TooltipContent, TooltipTrigger } from '../../Tooltip/Tooltip';
 import Typography, { TypographyWeight } from '../../Typography';
 import { BUTTON_ICON_SIZE, BUTTON_TYPE_COLOR, ButtonSize } from '../Button.constants';
 import { BUTTON_TYPE_CONTAINER_CSS } from '../Button.styles';
 
-import { ButtonProps, SIZE_STYLES, TYPOGRAPHY_SIZE } from './TextButton.constants';
+import { SIZE_STYLES, TYPOGRAPHY_SIZE } from './TextButton.constants';
 import { BUTTON_SIZE_CONTAINER_CSS } from './TextButton.styles';
+import { ButtonProps } from './TextButton.types';
 
 const ButtonContainer = styled.div<{
   $floatRight: boolean;
@@ -86,12 +88,11 @@ function Button(
     floatRight = false,
     forceTheme,
     fullWidth = false,
-    startIcon,
+    icon: startIcon,
     id,
     disabled = false,
     onClick,
     dataTest,
-    iconColor,
     loading,
     compact = false
   }: ButtonProps,
@@ -101,18 +102,24 @@ function Button(
   const isDisabledOrLoading = !!disabled || !!loading;
 
   const buttonContentColor = isDisabledOrLoading ? 'disabled' : BUTTON_TYPE_COLOR[type];
-  const startIconColor = isDisabledOrLoading ? 'disabled' : iconColor ?? buttonContentColor;
 
   const iconSize = BUTTON_ICON_SIZE[size];
   const typographySize = TYPOGRAPHY_SIZE[size];
   const { gap, horizontalPadding } = SIZE_STYLES[size];
 
-  const renderStartIcon = () =>
-    typeof startIcon === 'string' ? (
-      <Icons size={iconSize} icon={startIcon} color={startIconColor} forceTheme={forceTheme} />
+  const renderIcon = (icon: Icon | IconComponent) => {
+    const customColor = typeof icon === 'string' ? undefined : icon.props.color;
+    const iconColor = isDisabledOrLoading ? 'disabled' : customColor ?? BUTTON_TYPE_COLOR[type];
+    return typeof icon === 'string' ? (
+      <Icons size={iconSize} icon={icon} color={iconColor} forceTheme={forceTheme} />
     ) : (
-      startIcon
+      React.cloneElement(icon, {
+        forceTheme,
+        size: icon.props.size ?? iconSize,
+        color: iconColor
+      })
     );
+  };
 
   return (
     <Tooltip>
@@ -132,7 +139,7 @@ function Button(
           $compact={compact}
         >
           <ButtonBody $gap={gap} $hidden={hideButtonBody}>
-            {!!startIcon && renderStartIcon()}
+            {!!startIcon && renderIcon(startIcon)}
             <Typography
               forceTheme={forceTheme}
               size={typographySize}
@@ -144,7 +151,7 @@ function Button(
           </ButtonBody>
           {loading && (
             <LoadingContainer $fullWidth={fullWidth} $horizontalPadding={horizontalPadding}>
-              <CustomCircularProgress progressColor={buttonContentColor} spinner forceTheme={forceTheme} />
+              <CircularProgress progressColor={buttonContentColor} spinner forceTheme={forceTheme} />
             </LoadingContainer>
           )}
         </ButtonContainer>

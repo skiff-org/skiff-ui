@@ -1,26 +1,26 @@
-import { Alignment, ThemeMode } from "../../types";
-import { Color } from "../../utils/colorUtils";
+import { Alignment, ThemeMode } from '../../types';
+import { Color } from '../../utils/colorUtils';
 
 export enum TypographyOverflow {
-  VISIBLE = "visible",
-  HIDDEN = "hidden",
+  VISIBLE = 'visible',
+  HIDDEN = 'hidden'
 }
 
 export enum TypographySize {
-  H1 = "h1",
-  H2 = "h2",
-  H3 = "h3",
-  H4 = "h4",
-  LARGE = "large",
-  MEDIUM = "medium",
-  SMALL = "small",
-  CAPTION = "caption",
+  H1 = 'h1',
+  H2 = 'h2',
+  H3 = 'h3',
+  H4 = 'h4',
+  LARGE = 'large',
+  MEDIUM = 'medium',
+  SMALL = 'small',
+  CAPTION = 'caption'
 }
 
 export enum TypographyWeight {
   BOLD = 560,
   MEDIUM = 470,
-  REGULAR = 380,
+  REGULAR = 380
 }
 
 export interface TypographyProps {
@@ -39,9 +39,9 @@ export interface TypographyProps {
   /** Make Typography component an inline element */
   inline?: boolean;
   /** Overrides CSS max-width property */
-  maxWidth?: string;
+  maxWidth?: number | string;
   /** Overrides CSS min-width property */
-  minWidth?: string;
+  minWidth?: number | string;
   mono?: boolean;
   /** CSS overflow property */
   overflow?: TypographyOverflow;
@@ -56,7 +56,7 @@ export interface TypographyProps {
   /** The type of text */
   weight?: TypographyWeight;
   /** Overrides CSS width property */
-  width?: string;
+  width?: number | string;
   /** Whether text lines may wrap at soft-wrap opportunities */
   wrap?: boolean;
   onClick?: (e: React.MouseEvent) => void;

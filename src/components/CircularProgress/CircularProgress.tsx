@@ -1,11 +1,12 @@
-import styled from "styled-components";
-import { Size } from "../../types";
-import { getColorTextValue, getThemedColor } from "../../utils/colorUtils";
-import Tooltip, { TooltipContent, TooltipTrigger } from "../Tooltip";
-import {
-  CustomCircularProgressProps,
-  SIZE_VALUES,
-} from "./CustomCircularProgress.constants";
+import React from 'react';
+import styled from 'styled-components';
+
+import { Size } from '../../types';
+import Tooltip, { TooltipContent, TooltipTrigger } from '../Tooltip';
+
+import { SIZE_VALUES } from './CircularProgress.constants';
+import { CircularProgressProps } from './CircularProgress.types';
+import { getColorValue } from './CircularProgress.utils';
 
 const CircularProgressRoot = styled.span<{ $size: number }>`
   width: ${(props) => props.$size}px;
@@ -29,11 +30,7 @@ const CircularProgressSvg = styled.svg<{ $svgOffset: number }>`
   left: ${(props) => props.$svgOffset}px; // centered align
 `;
 
-const CircularProgressTrack = styled.circle<{
-  $thickness: number;
-  $color: string;
-  $radius: number;
-}>`
+const CircularProgressTrack = styled.circle<{ $thickness: number; $color: string; $radius: number }>`
   cx: 50%;
   cy: 50%;
   r: ${(props) => props.$radius}px;
@@ -69,48 +66,40 @@ const CircularProgressProgress = styled.circle<{
       transform: rotate(270deg);
     }
   }
-  ${(props) =>
-    props.$spinner &&
-    "animation: 0.75s ease-in-out 0s infinite normal none running circulate;"}
+  ${(props) => props.$spinner && 'animation: 0.75s ease-in-out 0s infinite normal none running circulate;'}
 `;
 
-const CustomCircularProgress = ({
+const CircularProgress = ({
+  className,
   dataTest,
   forceTheme,
   progress = 47,
+  progressColor = 'secondary',
   size = Size.MEDIUM,
   spinner = false,
-  trackColor = "var(--bg-overlay-tertiary)",
-  progressColor = "secondary",
+  style,
   tooltip,
-}: CustomCircularProgressProps) => {
-  const { rootSize, borderWidth, trackThickness, progressThickness } =
-    SIZE_VALUES[size];
-  const progressColorValue = getColorTextValue(progressColor, forceTheme);
-  const trackColorValue = getThemedColor(trackColor, forceTheme);
+  trackColor = 'var(--bg-overlay-tertiary)'
+}: CircularProgressProps) => {
+  const { rootSize, borderWidth, trackThickness, progressThickness } = SIZE_VALUES[size];
+  const progressColorValue = getColorValue(progressColor, forceTheme);
+  const trackColorValue = getColorValue(trackColor, forceTheme);
 
   const svgOffset = -1 * borderWidth;
   const innerSize = rootSize - borderWidth * 2;
   const thicknessDiff = trackThickness - progressThickness;
-  const trackRadius =
-    innerSize / 2 - trackThickness / 2 + Math.min(0, thicknessDiff / 2);
-  const progressRadius =
-    innerSize / 2 - progressThickness / 2 + Math.max(0, thicknessDiff / 2);
+  const trackRadius = innerSize / 2 - trackThickness / 2 + Math.min(0, thicknessDiff / 2);
+  const progressRadius = innerSize / 2 - progressThickness / 2 + Math.max(0, thicknessDiff / 2);
   const progressLength = 2 * 3.1415926535 * progressRadius;
   const valuePercent = progress;
-  const strokeDashoffset =
-    progressLength - (valuePercent * progressLength) / 100;
+  const strokeDashoffset = progressLength - (valuePercent * progressLength) / 100;
   return (
     <Tooltip>
       <TooltipContent>{tooltip}</TooltipContent>
       <TooltipTrigger>
-        <CircularProgressRoot $size={rootSize} data-test={dataTest}>
+        <CircularProgressRoot className={className} data-test={dataTest} style={style} $size={rootSize}>
           <CircularProgressSvg $svgOffset={svgOffset}>
-            <CircularProgressTrack
-              $thickness={trackThickness}
-              $color={trackColorValue}
-              $radius={trackRadius}
-            />
+            <CircularProgressTrack $thickness={trackThickness} $color={trackColorValue} $radius={trackRadius} />
             <CircularProgressProgress
               $radius={progressRadius}
               $thickness={progressThickness}
@@ -126,4 +115,4 @@ const CustomCircularProgress = ({
   );
 };
 
-export default CustomCircularProgress;
+export default CircularProgress;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { useKeyboardNavigation } from '../../hooks';
 import { themeNames } from '../../theme';
+import { ThemeMode } from '../../types';
 import BackgroundBlocker from '../../utils/BackgroundBlocker';
 import { SUBMENU_OVERLAP } from '../DropdownSubmenu/DropdownSubmenu.constants';
 import Portal from '../Portal';
@@ -26,24 +27,24 @@ const SurfaceContainer = styled.div<{
   $isAnchored: boolean;
   $defaultLeft?: number;
   $defaultTop?: number;
-  $width?: number;
+  $width?: number | string;
   $zIndex?: number;
 }>`
-  z-index: ${(props) => props.$zIndex ?? '99999999'};
-  ${(props) => props.$width && `width: ${props.$width}px;`}
-  ${(props) => props.$hideMouse && HIDE_MOUSE_CSS}
-  ${(props) => (props.$isAnchored ? ANCHORED_DROPDOWN_CSS : NON_ANCHORED_DROPDOWN_CSS)};
+  z-index: ${({ $zIndex }) => $zIndex ?? '99999999'};
+  ${({ $width }) => $width && `width: ${typeof $width === 'string' ? $width : `${$width}px`};`}
+  ${({ $hideMouse }) => $hideMouse && HIDE_MOUSE_CSS}
+  ${({ $isAnchored }) => ($isAnchored ? ANCHORED_DROPDOWN_CSS : NON_ANCHORED_DROPDOWN_CSS)};
 `;
 
 const StyledSurface = styled(Surface)<{
-  $maxHeight: number | undefined;
+  $maxHeight?: number | string;
 }>`
   background: ${themeNames.dark['--bg-l3-solid']} !important;
 
-  ${(props) =>
-    props.$maxHeight &&
+  ${({ $maxHeight }) =>
+    $maxHeight &&
     `
-      max-height: ${props.$maxHeight}px;
+      max-height: ${typeof $maxHeight === 'string' ? $maxHeight : `${$maxHeight}px`};
       overflow: auto;
     `}
 `;
@@ -78,12 +79,7 @@ function Dropdown(
   // Dropdown anchor
   const [anchor, setAnchor] = useState<DropdownAnchor>({});
   // Current dropdown positions
-  const [currSurfaceRect, setCurrSurfaceRect] = useState<SurfaceRect>({
-    width: 0,
-    height: 0,
-    x: 0,
-    y: 0
-  });
+  const [currSurfaceRect, setCurrSurfaceRect] = useState<SurfaceRect>({ width: 0, height: 0, x: 0, y: 0 });
   // If the dropdown is a submenu, this state indicates whether it opens to the right or to the left
   const [submenuOpenRight, setSubmenuOpenRight] = useState<boolean | undefined>(undefined);
 
@@ -273,6 +269,7 @@ function Dropdown(
         width={width}
         minWidth={minWidth}
         maxWidth={maxWidth}
+        forceTheme={ThemeMode.DARK}
         $maxHeight={maxHeight}
       >
         {children}

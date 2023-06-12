@@ -1,8 +1,10 @@
-import { ThemeMode } from "../../../types";
-import Typography from "../../Typography";
-import { InputFieldSize } from "../InputField.types";
+import React from 'react';
 
-import { SUB_TEXT_SIZE } from "./SubText.constants";
+import { ThemeMode } from '../../../types';
+import Typography from '../../Typography';
+import { InputFieldSize } from '../InputField.types';
+
+import { SUB_TEXT_SIZE } from './SubText.constants';
 
 interface SubTextProps {
   size: InputFieldSize;
@@ -16,7 +18,7 @@ const SubText = ({ errorMsg, forceTheme, helperText, size }: SubTextProps) => {
   const hasHelperText = !!helperText?.length;
   if (!hasErrorMsg && !hasHelperText) return <></>;
   // We give priority to error messages over helper texts
-  const color = hasErrorMsg ? "destructive" : "secondary";
+  const color = hasErrorMsg ? 'destructive' : 'secondary';
   const text = hasErrorMsg ? errorMsg : helperText;
   const subTextSize = SUB_TEXT_SIZE[size];
 

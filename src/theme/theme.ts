@@ -284,7 +284,8 @@ const theme = {
     '--skiff-code-mark-bg': `rgba(${colors['--black']}, ${opacities['--6']})`,
     /* thread item */
     '--bg-cell-unread': `rgb(${colors['--white']})`,
-    '--status-bar-color': `linear-gradient(0deg, rgba(${colors['--black']}, ${opacities['--2']}), rgba(${colors['--black']}, ${opacities['--2']})), rgb(${colors['--white']})`
+    '--status-bar-color': `linear-gradient(0deg, rgba(${colors['--black']}, ${opacities['--2']}), rgba(${colors['--black']}, ${opacities['--2']})), rgb(${colors['--white']})`,
+    '--illustration-fill': `rgb(${colors['--grey-100']})`
   },
   dark: {
     ...colors,
@@ -407,7 +408,8 @@ const theme = {
     '--skiff-code-mark-bg': `rgba(${colors['--black']}, ${opacities['--6']})`,
     /* thread item */
     '--bg-cell-unread': `linear-gradient(0deg, rgba(${colors['--white']}, ${opacities['--14']}), rgba(${colors['--white']}, ${opacities['--14']})), rgb(${colors['--black']})`,
-    '--status-bar-color': `linear-gradient(0deg, rgba(${colors['--white']}, ${opacities['--12']}), rgba(${colors['--white']}, ${opacities['--12']})), rgb(${colors['--black']})`
+    '--status-bar-color': `linear-gradient(0deg, rgba(${colors['--white']}, ${opacities['--12']}), rgba(${colors['--white']}, ${opacities['--12']})), rgb(${colors['--black']})`,
+    '--illustration-fill': `rgb(${colors['--grey-800']})`
   }
 } as const;
 

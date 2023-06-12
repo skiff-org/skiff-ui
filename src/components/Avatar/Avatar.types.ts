@@ -40,6 +40,7 @@ interface BaseAvatarProps {
 }
 
 export type AvatarProps = RequireOnlyOne<BaseAvatarProps, 'label' | 'icon'>;
+export type AvatarComponent = React.ReactElement<AvatarProps>;
 
 export type SizeStyles = {
   // Avatar width and height value

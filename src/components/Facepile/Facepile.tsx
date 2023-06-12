@@ -3,11 +3,12 @@ import styled, { css } from 'styled-components';
 
 import { Alignment, Layout, Size, ThemeMode } from '../../types';
 import { getThemedColor } from '../../utils/colorUtils';
+import { AvatarComponent } from '../Avatar';
 import { SIZE_STYLES as AVATAR_SIZE_STYLES } from '../Avatar/Avatar.constants';
 import Tooltip, { TooltipContent, TooltipTrigger } from '../Tooltip';
 import Typography, { TypographyWeight } from '../Typography';
 
-import { AvatarItem, FacepileProps, FacepileSize, MAX_STACKED_AVATARS } from './Facepile.constants';
+import { FacepileProps, FacepileSize, MAX_STACKED_AVATARS } from './Facepile.constants';
 import { AVATAR_WRAPPER_CSS, FACEPILE_WRAPPER_LAYOUT_CSS } from './Facepile.styles';
 import { compareInlineAvatars, compareStackedAvatars } from './Facepile.utils';
 
@@ -101,7 +102,7 @@ const Facepile: React.FC<FacepileProps> = ({
   };
 
   const renderVisibleAvatars = () =>
-    visibleAvatars.map((avatarItem: AvatarItem, index) => (
+    visibleAvatars.map((avatarItem: AvatarComponent, index) => (
       <AvatarWrapper
         key={`${avatarItem.props.label ?? ''}_${index}`}
         $index={index}

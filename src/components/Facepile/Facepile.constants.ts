@@ -1,7 +1,6 @@
 import { Layout, Size, ThemeMode } from '../../types';
-import { AvatarProps } from '../Avatar';
+import { AvatarComponent } from '../Avatar';
 
-export type AvatarItem = React.ReactElement<AvatarProps>;
 export type FacepileSize = Size.X_SMALL | Size.SMALL | Size.MEDIUM | Size.X_MEDIUM | Size.LARGE;
 export type StackedAvatarPosition = {
   left: number;
@@ -9,7 +8,7 @@ export type StackedAvatarPosition = {
 };
 
 export interface FacepileProps {
-  children: Array<AvatarItem>;
+  children: Array<AvatarComponent>;
   /** Override background color */
   background?: string;
   forceTheme?: ThemeMode;

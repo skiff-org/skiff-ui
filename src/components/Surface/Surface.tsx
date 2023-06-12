@@ -109,9 +109,9 @@ export const StyledSurface = styled.div<{
   level: 'l0' | 'l1' | 'l2' | 'l3';
   size: 'xsmall' | 'small' | 'normal' | 'large' | 'xlarge' | 'xxlarge' | 'full-width' | 'full-screen';
   forceTheme?: ThemeMode;
-  $maxWidth?: number;
-  $minWidth?: number;
-  $width?: number;
+  $maxWidth?: number | string;
+  $minWidth?: number | string;
+  $width?: number | string;
 }>`
   ${DISPLAY_SCROLLBAR_CSS}
 
@@ -131,8 +131,16 @@ export const StyledSurface = styled.div<{
       return props.forceTheme ? themeNames[props.forceTheme]['--border-secondary'] : 'var(--border-secondary)';
     }};
   z-index: 999;
-  min-width: ${(props) => (props.$minWidth ? `${props.$minWidth}px !important` : '185px')};
-  max-width: ${(props) => (props.$maxWidth ? `${props.$maxWidth}px !important` : getMaxWidthFromSize(props.size))};
+  min-width: ${({ $minWidth }) => {
+    if (!$minWidth) return '185px';
+    return `${typeof $minWidth === 'string' ? $minWidth : `${$minWidth}px`} !important`;
+  }};
+
+  max-width: ${({ $maxWidth, size }) => {
+    if (!$maxWidth) return getMaxWidthFromSize(size);
+    return `${typeof $maxWidth === 'string' ? $maxWidth : `${$maxWidth}px`} !important`;
+  }};
+
   &.padding {
     padding: 20px;
   }
@@ -169,9 +177,9 @@ export const StyledSurface = styled.div<{
     box-shadow: none;
   }
   position: ${(props) => getLevelStyles(props.level, props.forceTheme).position};
-  width: ${(props) => {
-    if (props.$width) return `${props.$width}px !important;`;
-    return `${getWidthFromSize(props.size)};`;
+  width: ${({ $width, size }) => {
+    if (!$width) return getWidthFromSize(size);
+    return `${typeof $width === 'string' ? $width : `${$width}px`} !important`;
   }};
   height: ${(props) => getHeightFromSize(props.size)};
   &.hug {
@@ -215,9 +223,9 @@ export interface SurfaceProps {
   clickOutsideWebListener?: MouseClickEvents;
   /** Custom height of surface wrapper (e.g. for custom vertical alignment) */
   customWrapperHeight?: string | number;
-  width?: number;
-  minWidth?: number;
-  maxWidth?: number;
+  width?: number | string;
+  minWidth?: number | string;
+  maxWidth?: number | string;
 }
 
 function Surface(
@@ -305,7 +313,6 @@ function Surface(
     const overflowY = surfaceBottom + DROPDOWN_GAP > window.innerHeight;
     // if it overflows in Y, shift it to the top
     if (overflowY) {
-      if (typeof window === 'undefined') return;
       const requiredShift = window.innerHeight - surfaceBottom - DROPDOWN_GAP;
       // if the shifting amount will shift the sub-menu passed the bottom edge of the button
       // align the lower edge of the sub-menu with the lower edge of the button

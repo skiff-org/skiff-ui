@@ -1,20 +1,19 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
-import { isMobile } from 'react-device-detect';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { SIZE_HEIGHT } from '../../../constants';
 import { SQUARE_CSS } from '../../../styles';
-import { Size, ThemeMode, Type } from '../../../types';
+import { FilledVariant, Size, ThemeMode, Type } from '../../../types';
 import Icons, { IconColor } from '../../Icons';
 import KeyCodeSequence from '../../KeyCodeSequence';
 import Tooltip from '../../Tooltip';
 import { TooltipContent, TooltipTrigger } from '../../Tooltip/Tooltip';
 import { BUTTON_ICON_SIZE, BUTTON_TYPE_COLOR } from '../Button.constants';
-import { BUTTON_TYPE_CONTAINER_CSS } from '../Button.styles';
 
-import { BUTTON_SIZE_BORDER_RADIUS, IconButtonProps, IconButtonType } from './IconButton.constants';
-import { GHOST_ICON_BUTTON_CSS } from './IconButton.styles';
+import { BUTTON_SIZE_BORDER_RADIUS } from './IconButton.constants';
+import { ICON_BUTTON_VARIANT_CSS } from './IconButton.styles';
+import { IconButtonProps, IconButtonType } from './IconButton.types';
 
 const TooltipWithShortcut = styled.div`
   display: flex;
@@ -24,12 +23,11 @@ const TooltipWithShortcut = styled.div`
 
 const IconButtonContainer = styled.div<{
   $borderRadius: number;
-  $floatRight: boolean;
+  $disabled: boolean;
   $size: number;
   $type: IconButtonType;
-  $filled: boolean;
+  $variant: FilledVariant;
   $forceTheme?: ThemeMode;
-  $fullHeight?: boolean;
 }>`
   box-sizing: border-box;
   background: transparent;
@@ -39,51 +37,29 @@ const IconButtonContainer = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${(props) => props.$borderRadius}px;
+  border-radius: ${({ $borderRadius }) => $borderRadius}px;
 
-  ${(props) => (props.$filled ? BUTTON_TYPE_CONTAINER_CSS : GHOST_ICON_BUTTON_CSS)}
+  ${({ $disabled }) => $disabled && 'cursor: default;'}
 
-  ${(props) => (props.$floatRight ? 'margin-left: auto;' : '')}
-  ${(props) =>
-    !!props.$fullHeight
-      ? css`
-          aspect-ratio: 1;
-          height: 100%;
-        `
-      : SQUARE_CSS}
-
-  ${isMobile &&
-  css`
-    transition: background 0.2s;
-
-    &:active,
-    &.active {
-      transition: background 0s;
-    }
-  `}
-
-  &.disabled {
-    cursor: default;
-  }
+  ${ICON_BUTTON_VARIANT_CSS}
+  ${SQUARE_CSS}
 `;
 
 function IconButton(
   {
-    iconColor,
-    size = Size.MEDIUM,
-    tooltip = '',
-    type = Type.PRIMARY,
-    active = false,
-    filled = false,
-    floatRight = false,
+    animationProps,
+    className,
+    dataTest,
+    disabled = false,
+    forceTheme,
     icon,
     id,
-    disabled = false,
-    onClick,
-    dataTest,
-    forceTheme,
-    fullHeight,
-    animationProps
+    size = Size.MEDIUM,
+    style,
+    tooltip = '',
+    type = Type.PRIMARY,
+    variant = FilledVariant.FILLED,
+    onClick
   }: IconButtonProps,
   ref: React.ForwardedRef<HTMLDivElement | null>
 ) {
@@ -101,10 +77,19 @@ function IconButton(
   };
 
   const renderIcon = () => {
-    const defaultColor = filled ? BUTTON_TYPE_COLOR[type] : (type as IconColor);
-    const color = disabled ? 'disabled' : iconColor ?? defaultColor;
+    const customColor = typeof icon === 'string' ? undefined : icon.props.color;
+    const defaultColor = variant === FilledVariant.FILLED ? BUTTON_TYPE_COLOR[type] : (type as IconColor);
+    const color = disabled ? 'disabled' : customColor ?? defaultColor;
     const iconSize = BUTTON_ICON_SIZE[size];
-    return <Icons size={iconSize} icon={icon} color={color} forceTheme={forceTheme} />;
+    return typeof icon === 'string' ? (
+      <Icons size={iconSize} icon={icon} color={color} forceTheme={forceTheme} />
+    ) : (
+      React.cloneElement(icon, {
+        color,
+        forceTheme,
+        size: icon.props.size ?? iconSize
+      })
+    );
   };
 
   return (
@@ -112,18 +97,18 @@ function IconButton(
       <TooltipContent>{!disabled ? renderTooltipContent() : ''}</TooltipContent>
       <TooltipTrigger>
         <IconButtonContainer
+          className={className}
+          data-test={dataTest}
           id={id}
           ref={ref}
+          style={style}
           onClick={disabled ? undefined : onClick}
-          data-test={dataTest}
           $borderRadius={borderRadius}
-          $floatRight={floatRight}
-          $fullHeight={fullHeight}
+          $disabled={disabled}
           $size={buttonSize}
           $type={type}
-          $filled={filled}
+          $variant={variant}
           $forceTheme={forceTheme}
-          className={`${active ? 'active' : ''} ${disabled ? 'disabled' : ''}`}
         >
           {animationProps ? <motion.div {...animationProps}>{renderIcon()}</motion.div> : renderIcon()}
         </IconButtonContainer>

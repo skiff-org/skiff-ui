@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
 
-import { ThemeMode, Type } from '../../../types';
+import { FilledVariant, ThemeMode, Type } from '../../../types';
 import { getThemedColor } from '../../../utils/colorUtils';
-import { TERTIARY_BUTTON_CSS } from '../Button.styles';
+import { BUTTON_TYPE_CONTAINER_CSS, TERTIARY_BUTTON_CSS } from '../Button.styles';
 
-import { IconButtonType } from './IconButton.constants';
+import { IconButtonType } from './IconButton.types';
 
 export const GHOST_ICON_BUTTON_CSS = ({
   $type,
@@ -28,3 +28,6 @@ export const GHOST_ICON_BUTTON_CSS = ({
     }
   `}
 `;
+
+export const ICON_BUTTON_VARIANT_CSS = ({ $variant }: { $variant: FilledVariant }) =>
+  $variant === FilledVariant.FILLED ? BUTTON_TYPE_CONTAINER_CSS : GHOST_ICON_BUTTON_CSS;

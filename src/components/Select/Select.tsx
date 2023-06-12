@@ -1,17 +1,19 @@
-import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import React, { useRef, useState } from 'react';
+import { isMobile } from 'react-device-detect';
+import styled from 'styled-components';
 
-import { Size } from "../../types";
-import Dropdown from "../Dropdown";
-import { Icon } from "../Icons";
-import IconText from "../IconText/IconText";
-import { InputField } from "../InputField";
-import { TypographyWeight } from "../Typography";
+import { FilledVariant, Size } from '../../types';
+import Drawer, { DrawerGroup } from '../Drawer';
+import Dropdown from '../Dropdown';
+import { Icon } from '../Icons';
+import IconText from '../IconText/IconText';
+import { InputField } from '../InputField';
+import { TypographyWeight } from '../Typography';
 
-import { SelectProps } from "./Select.types";
+import { SelectProps } from './Select.types';
 
-const SelectContainer = styled.div<{ $width?: number }>`
-  ${({ $width }) => $width && `width: ${$width}px;`}
+const SelectContainer = styled.div<{ $width?: number | string }>`
+  ${({ $width }) => $width && `width: ${typeof $width === 'string' ? $width : `${$width}px`};`}
 `;
 
 export default function Select({
@@ -19,7 +21,6 @@ export default function Select({
   onChange,
   dataTest,
   disabled,
-  filled = false,
   forceTheme,
   ghostColor,
   maxHeight,
@@ -29,7 +30,8 @@ export default function Select({
   value,
   width,
   fullWidth = true,
-  zIndex,
+  variant = FilledVariant.UNFILLED,
+  zIndex
 }: SelectProps) {
   // Whether the dropdown is visible or not
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,10 +41,8 @@ export default function Select({
   const typographyWeight = TypographyWeight.REGULAR;
 
   // To get dropdown anchor
-  const selectTriggerRef: React.MutableRefObject<HTMLDivElement | null> =
-    useRef(null);
-  const selectedLabel = children.find((child) => value === child.props.value)
-    ?.props.label;
+  const selectTriggerRef: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
+  const selectedLabel = children.find((child) => value === child.props.value)?.props.label;
 
   const toggleOpen = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -62,7 +62,7 @@ export default function Select({
   );
 
   const renderEnabledField = () =>
-    filled ? (
+    variant === FilledVariant.FILLED ? (
       // Filled field
       <InputField
         active={menuOpen}
@@ -72,14 +72,13 @@ export default function Select({
         onClick={toggleOpen}
         placeholder={placeholder}
         ref={selectTriggerRef}
-        value={typeof selectedLabel === "string" ? selectedLabel : ""}
+        value={typeof selectedLabel === 'string' ? selectedLabel : ''}
         size={size}
         forceTheme={forceTheme}
       />
     ) : (
       // Ghost field
       <IconText
-        active={menuOpen}
         forceTheme={forceTheme}
         ref={selectTriggerRef}
         dataTest={dataTest}
@@ -96,10 +95,7 @@ export default function Select({
     children.map((child) => {
       return React.cloneElement(child, {
         active: value === child.props.value,
-        key:
-          typeof child.props.label === "string"
-            ? child.props.label
-            : child.props.value,
+        key: typeof child.props.label === 'string' ? child.props.label : child.props.value,
         onClick: async (e: React.MouseEvent<HTMLDivElement>) => {
           e.stopPropagation();
           // If the child has its own onClick function passed, then it is not a normal select item
@@ -107,23 +103,28 @@ export default function Select({
           if (!!child.props.onClick) await child.props.onClick(e);
           else if (!!child.props.value) onChange(child.props.value);
           toggleOpen();
-        },
+        }
       });
     });
 
-  const renderOptionMenu = () => (
-    <Dropdown
-      portal
-      buttonRef={selectTriggerRef}
-      setShowDropdown={() => toggleOpen()}
-      showDropdown={isOpen}
-      fullWidth={fullWidth}
-      maxHeight={maxHeight}
-      zIndex={zIndex}
-    >
-      {renderSelectItems()}
-    </Dropdown>
-  );
+  const renderOptionMenu = () =>
+    isMobile ? (
+      <Drawer show={isOpen} hideDrawer={toggleOpen} maxHeight={maxHeight}>
+        <DrawerGroup>{renderSelectItems()}</DrawerGroup>
+      </Drawer>
+    ) : (
+      <Dropdown
+        portal
+        buttonRef={selectTriggerRef}
+        setShowDropdown={() => toggleOpen()}
+        showDropdown={isOpen}
+        fullWidth={fullWidth}
+        maxHeight={maxHeight}
+        zIndex={zIndex}
+      >
+        {renderSelectItems()}
+      </Dropdown>
+    );
 
   return (
     <SelectContainer $width={width}>

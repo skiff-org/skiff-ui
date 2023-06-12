@@ -1,7 +1,9 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
-import { ThemeMode, getThemedColor } from '../..';
+import { ThemeMode } from '../../types';
+import { getThemedColor } from '../../utils/colorUtils';
+
 import { SKELETON_COLOR } from './Skeleton.constants';
 import { SkeletonColor, SkeletonProps } from './Skeleton.types';
 

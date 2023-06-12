@@ -17,7 +17,7 @@ const DropdownItemContainer = styled.div<{
   $clickable: boolean;
   $hovering: boolean;
   $size: DropdownItemSize;
-  $isLast?: boolean;
+  $hideDivider?: boolean;
 }>`
   display: flex;
   flex-direction: row;
@@ -32,14 +32,13 @@ const DropdownItemContainer = styled.div<{
   border-radius: 6px;
   height: ${(props) => SIZE_HEIGHT[props.$size]}px;
 
-  ${({ $isLast }) =>
+  ${({ $hideDivider }) =>
     isMobile &&
     css`
       padding: 16px;
       height: 56px !important;
       box-sizing: border-box;
-      border-bottom: 1px solid
-        ${!$isLast && $isLast !== undefined ? themeNames.dark['--border-tertiary'] : 'transparent'};
+      border-bottom: 1px solid ${$hideDivider === false ? themeNames.dark['--border-tertiary'] : 'transparent'};
     `}
 
   ${(props) => {
@@ -91,6 +90,7 @@ function DropdownItem(
     dataTest,
     disabled = false,
     endElement,
+    hideDivider,
     highlight,
     onHover,
     icon,
@@ -98,8 +98,7 @@ function DropdownItem(
     scrollIntoView = false,
     size = Size.MEDIUM,
     startElement,
-    onClick,
-    isLast
+    onClick
   }: DropdownItemProps,
   ref: ForwardedRef<HTMLDivElement>
 ) {
@@ -155,7 +154,7 @@ function DropdownItem(
       $clickable={clickable}
       $hovering={hovering}
       $size={size}
-      $isLast={isLast}
+      $hideDivider={hideDivider}
       onMouseOver={() => {
         if (!clickable) return;
         setHover(true);

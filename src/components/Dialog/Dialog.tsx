@@ -2,10 +2,10 @@ import React from 'react';
 import { isMobile } from 'react-device-detect';
 import styled, { css } from 'styled-components';
 
-import { Alignment, Layout, ThemeMode, Type, Size } from '../../types';
+import { Alignment, Layout, ThemeMode, Type, Size, FilledVariant } from '../../types';
 import { IconButton } from '../Button';
 import ButtonGroup, { ButtonGroupProps } from '../ButtonGroup';
-import CustomCircularProgress, { AbsolutelyCentered } from '../CustomCircularProgress';
+import CircularProgress, { AbsolutelyCentered } from '../CircularProgress';
 import Icons, { Icon, IconProps } from '../Icons';
 import { InputComponent, TextAreaComponent } from '../InputField';
 import Surface, { SurfaceProps, CONFIRM_MODAL_CLASSNAME } from '../Surface';
@@ -225,13 +225,14 @@ export default function Dialog({
         icon={Icon.Close}
         dataTest={closeBtnDataTest}
         forceTheme={forceTheme}
+        variant={FilledVariant.UNFILLED}
       />
     </CloseButtonAbsolutePos>
   );
 
   const spinner = (
     <AbsolutelyCentered>
-      <CustomCircularProgress size={Size.X_MEDIUM} spinner />
+      <CircularProgress size={Size.X_MEDIUM} spinner />
     </AbsolutelyCentered>
   );
   // Both variables only defined the type of the dialog is Confirm.

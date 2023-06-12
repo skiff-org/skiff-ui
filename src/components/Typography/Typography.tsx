@@ -17,10 +17,10 @@ const OuterText = styled.span<{
   $uppercase: boolean;
   $weight: TypographyWeight;
   $mono: boolean;
-  $maxWidth?: string;
-  $minWidth?: string;
+  $maxWidth?: number | string;
+  $minWidth?: number | string;
   $transition?: string;
-  $width?: string;
+  $width?: number | string;
 }>`
   display: ${(props) => (props.$inline ? 'inline-flex' : 'flex')};
   overflow-wrap: break-word;

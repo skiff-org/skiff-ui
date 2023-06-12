@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Layout, Size } from '../../types';
+import { FilledVariant, Layout, Size } from '../../types';
 import { Button, IconButton } from '../Button';
 import { Icon } from '../Icons';
 
@@ -52,6 +52,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
                 forceTheme={forceTheme}
                 tooltip={label}
                 size={size}
+                variant={FilledVariant.UNFILLED}
               />
             )}
             {!showIconOnly && (
@@ -61,7 +62,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
                 loading={loading}
                 disabled={disabled}
                 dataTest={dataTest}
-                startIcon={icon}
+                icon={icon}
                 id={id}
                 fullWidth={fullWidth}
                 onClick={onClick}

@@ -1,17 +1,17 @@
+import { FilledVariant } from '../../types';
 import { Color } from '../../utils/colorUtils';
 import { IconColor } from '../Icons';
 
-const getInteractiveIconTextColor = (filled: boolean, isActive: boolean, isHovering: boolean) => {
-  if (isActive || isHovering) return 'primary';
-  return filled ? 'secondary' : 'disabled';
+const getInteractiveIconTextColor = (isHovering: boolean, variant: FilledVariant) => {
+  if (isHovering) return 'primary';
+  return variant === FilledVariant.FILLED ? 'secondary' : 'disabled';
 };
 
 export const getTextColor = (
-  filled: boolean,
-  isActive: boolean,
   isClickable: boolean,
   isDisabled: boolean,
   isHovering: boolean,
+  variant: FilledVariant,
   customColor?: Color
 ): Color => {
   if (isDisabled) return 'disabled';
@@ -19,18 +19,17 @@ export const getTextColor = (
 
   if (isClickable) {
     // this is an interactive IconText
-    return getInteractiveIconTextColor(filled, isActive, isHovering);
+    return getInteractiveIconTextColor(isHovering, variant);
   }
 
   return 'primary';
 };
 
 export const getIconColor = (
-  filled: boolean,
-  isActive: boolean,
   isClickable: boolean,
   isDisabled: boolean,
   isHovering: boolean,
+  variant: FilledVariant,
   customColor?: IconColor
 ): IconColor => {
   if (isDisabled) return 'disabled';
@@ -38,7 +37,7 @@ export const getIconColor = (
 
   if (isClickable) {
     // this is an interactive IconText
-    return getInteractiveIconTextColor(filled, isActive, isHovering);
+    return getInteractiveIconTextColor(isHovering, variant);
   }
 
   return 'primary';

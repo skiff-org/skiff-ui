@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import { ThemeMode } from '../../types';
-import { IconProps } from '../Icons';
+import { Icon } from '../Icons';
+import { IconComponent } from '../IconText';
 
 export interface ButtonGroupItemProps {
   /** Gets called when the user clicks on the button */
@@ -12,7 +13,7 @@ export interface ButtonGroupItemProps {
   disabled?: boolean;
   hidden?: boolean;
   destructive?: boolean;
-  icon?: IconProps['icon'];
+  icon?: Icon | IconComponent;
   id?: string;
   loading?: boolean;
   forceTheme?: ThemeMode;

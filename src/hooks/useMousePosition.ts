@@ -21,7 +21,6 @@ export const useMousePosition = () => {
   }, 200);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     window.addEventListener('mousemove', updateMousePosition);
     return () => window.removeEventListener('mousemove', updateMousePosition);
   }, [updateMousePosition]);

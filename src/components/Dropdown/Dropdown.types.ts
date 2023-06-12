@@ -27,18 +27,18 @@ export interface DropdownProps {
    * Max dropdown height
    * Enables overflow
    */
-  maxHeight?: number;
+  maxHeight?: number | string;
   /** Custom maximum width */
-  maxWidth?: number;
+  maxWidth?: number | string;
   /** Custom minimum width */
-  minWidth?: number;
+  minWidth?: number | string;
   noPadding?: boolean;
   /** Number of dropdown items (used for highlight logic) */
   numChildren?: number;
   portal?: boolean;
   showDropdown?: boolean;
   /** Custom width */
-  width?: number;
+  width?: number | string;
   /** Custom z-index */
   zIndex?: number;
   setHighlightedIdx?: (idx?: number) => void;

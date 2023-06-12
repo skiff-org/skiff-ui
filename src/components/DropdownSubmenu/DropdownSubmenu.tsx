@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 
-import { ThemeMode } from "../../types";
-import Dropdown, { SUBMENU_CONTAINER_CLASS } from "../Dropdown";
-import DropdownItem, { DROPDOWN_ITEM_ICON_CSS } from "../DropdownItem";
-import Icons, { Icon } from "../Icons";
+import { ThemeMode } from '../../types';
+import Dropdown, { SUBMENU_CONTAINER_CLASS } from '../Dropdown';
+import DropdownItem, { DROPDOWN_ITEM_ICON_CSS } from '../DropdownItem';
+import Icons, { Icon } from '../Icons';
 
-import { DropdownSubmenuProps } from "./DropdownSubmenu.types";
+import { DropdownSubmenuProps } from './DropdownSubmenu.types';
 
 const DropdownItemContainer = styled.div`
   width: 100%;
@@ -20,11 +20,7 @@ const IconContainer = styled.div`
   ${DROPDOWN_ITEM_ICON_CSS}
 `;
 
-export default function DropdownSubmenu({
-  label,
-  children,
-  icon,
-}: DropdownSubmenuProps) {
+export default function DropdownSubmenu({ label, children, icon }: DropdownSubmenuProps) {
   // Controls whether or not to show to submenu
   const [showDropdown, setShowDropdownSubmenu] = useState(false);
   // Whether or not the dropdown item is hovered over
@@ -48,10 +44,7 @@ export default function DropdownSubmenu({
   return (
     <>
       {/* The dropdown item that triggers opening the submenu */}
-      <DropdownItemContainer
-        onMouseEnter={() => setIsHoveringItem(true)}
-        onMouseLeave={() => setIsHoveringItem(false)}
-      >
+      <DropdownItemContainer onMouseEnter={() => setIsHoveringItem(true)} onMouseLeave={() => setIsHoveringItem(false)}>
         <DropdownItem
           endElement={
             <IconContainer $hovering={isHovering}>
