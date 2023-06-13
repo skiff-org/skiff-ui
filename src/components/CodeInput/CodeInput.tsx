@@ -5,7 +5,7 @@ import { ThemeMode } from '../../types';
 import { getThemedColor } from '../../utils/colorUtils';
 import Typography, { TypographySize } from '../Typography';
 
-import { CodeInputProps, CodeInputType } from './CodeInput.constants';
+import { CodeInputProps, CodeInputType } from './CodeInput.types';
 import { isValid, padEnd } from './CodeInput.utils';
 
 const CodeInputContainer = styled.div`
@@ -60,7 +60,7 @@ const CodeInputField = styled.input<{
 const CodeInput: React.FC<CodeInputProps> = ({
   codeLength,
   dataTest,
-  errorMsg,
+  error,
   isSubmitting,
   value,
   onChange,
@@ -163,18 +163,16 @@ const CodeInput: React.FC<CodeInputProps> = ({
             disabled={isSubmitting}
             $active={index === focusedFieldIndex}
             $codeLength={codeLength}
-            $error={!!errorMsg}
+            $error={!!error}
             $forceTheme={forceTheme}
             $type={type}
           />
         ))}
       </CodeInputContainer>
-      {errorMsg && (
-        <div style={{ minHeight: 4 }}>
+      {!!error && typeof error === 'string' && (
           <Typography forceTheme={forceTheme} color='destructive' size={TypographySize.SMALL} wrap>
-            {errorMsg}
+            {error}
           </Typography>
-        </div>
       )}
     </>
   );

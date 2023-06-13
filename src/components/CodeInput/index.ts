@@ -1,2 +1,2 @@
 export { default } from './CodeInput';
-export { CodeInputType } from './CodeInput.constants';
+export { CodeInputType } from './CodeInput.types';

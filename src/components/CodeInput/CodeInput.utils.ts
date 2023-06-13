@@ -1,4 +1,4 @@
-import { CodeInputType } from './CodeInput.constants';
+import { CodeInputType } from './CodeInput.types';
 
 /** Checks that the input is valid
  * @param {CodeInputType} type - The input type
