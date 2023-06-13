@@ -8,9 +8,8 @@ export enum DividerType {
 export type DividerColor = 'primary' | 'secondary' | 'tertiary';
 
 export interface DividerProps {
-  active?: boolean;
   /** Divider color */
-  color?: DividerColor;
+  color?: DividerColor | string;
   /** Forced theme */
   forceTheme?: ThemeMode;
   /** Custom height */
