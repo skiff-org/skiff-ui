@@ -22,7 +22,6 @@ export default function Select({
   forceTheme,
   ghostColor,
   maxHeight,
-  menuControls,
   placeholder,
   size = Size.LARGE,
   value,
@@ -33,7 +32,6 @@ export default function Select({
 }: SelectProps) {
   // Whether the dropdown is visible or not
   const [menuOpen, setMenuOpen] = useState(false);
-  const isOpen = menuControls?.isOpen || menuOpen;
 
   const endIcon = menuOpen ? Icon.ChevronUp : Icon.ChevronDown;
   const typographyWeight = TypographyWeight.REGULAR;
@@ -44,8 +42,7 @@ export default function Select({
 
   const toggleOpen = (e?: React.MouseEvent) => {
     e?.stopPropagation();
-    if (!!menuControls) menuControls.setIsOpen(!isOpen);
-    else setMenuOpen(!isOpen);
+    setMenuOpen(!menuOpen);
   };
 
   const renderDisabledField = () => (
@@ -105,26 +102,22 @@ export default function Select({
       });
     });
 
-  const renderOptionMenu = () => (
-    <Dropdown
-      portal
-      buttonRef={selectTriggerRef}
-      setShowDropdown={() => toggleOpen()}
-      showDropdown={isOpen}
-      fullWidth={fullWidth}
-      maxHeight={maxHeight}
-      zIndex={zIndex}
-    >
-      {renderSelectItems()}
-    </Dropdown>
-  );
-
   return (
     <SelectContainer $width={width}>
       {/* Field */}
       {disabled ? renderDisabledField() : renderEnabledField()}
       {/* Option menu */}
-      {renderOptionMenu()}
+      <Dropdown
+        portal
+        buttonRef={selectTriggerRef}
+        setShowDropdown={() => toggleOpen()}
+        showDropdown={menuOpen}
+        fullWidth={fullWidth}
+        maxHeight={maxHeight}
+        zIndex={zIndex}
+      >
+        {renderSelectItems()}
+      </Dropdown>
     </SelectContainer>
   );
 }
