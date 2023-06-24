@@ -33,9 +33,9 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
   return (
     <ButtonGroupContainer $isInline={isInline} $size={size}>
       {visibleChildren.map((buttonGroupItem: ButtonGroupItem, index) => {
-        const { dataTest, destructive, disabled, forceTheme, icon, id, label, loading, onClick, ref } =
+        const { dataTest, disabled, forceTheme, icon, id, label, loading, type, onClick, ref } =
           buttonGroupItem.props;
-        const buttonType = getButtonType(index, destructive);
+        const buttonType = type ?? getButtonType(index);
         const showIconOnly = iconOnly && index > 0;
         const key = `button_${index}_${label}`;
         return (
