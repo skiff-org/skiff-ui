@@ -48,6 +48,7 @@ const TooltipWrap = styled(motion.div)<{ $stateX: number | null; $stateY: number
 `;
 
 const StyledTooltipTrigger = styled.span<{ $fullWidth: boolean }>`
+  display: flex;
   ${(props) => props.$fullWidth && 'width: 100%;'}
 `;
 
