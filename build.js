@@ -47,6 +47,7 @@ const esbuildConf = (format) => ({
   format: format,
   outdir: `dist/${format}`,
   sourcemap: true,
+  sourcesContent: false,
   treeShaking: true,
   minify: true,
   plugins: [nodeExternalsPlugin(), svgrPlugin(), sassPlugin()],
