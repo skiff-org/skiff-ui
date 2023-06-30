@@ -8,15 +8,15 @@ export declare const GHOST_ICON_BUTTON_CSS: ({ $type, $forceTheme }: {
 }, any>>;
 export declare const ICON_BUTTON_VARIANT_CSS: ({ $variant }: {
     $variant: FilledVariant;
-}) => (({ $type, $forceTheme }: {
-    $type: IconButtonType;
-    $forceTheme?: ThemeMode | undefined;
-}) => import("styled-components").FlattenInterpolation<import("styled-components").ThemedStyledProps<{
-    $forceTheme?: ThemeMode | undefined;
-}, any>>) | (({ $type }: {
+}) => (({ $type }: {
     $type: Type;
     $forceTheme?: ThemeMode | undefined;
 }) => ({ $forceTheme }: {
     $forceTheme?: ThemeMode | undefined;
-}) => import("styled-components").FlattenSimpleInterpolation);
+}) => import("styled-components").FlattenSimpleInterpolation) | (({ $type, $forceTheme }: {
+    $type: IconButtonType;
+    $forceTheme?: ThemeMode | undefined;
+}) => import("styled-components").FlattenInterpolation<import("styled-components").ThemedStyledProps<{
+    $forceTheme?: ThemeMode | undefined;
+}, any>>);
 //# sourceMappingURL=IconButton.styles.d.ts.map
