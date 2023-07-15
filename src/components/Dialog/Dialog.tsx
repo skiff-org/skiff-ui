@@ -84,7 +84,7 @@ export interface DialogProps {
   inputField?: Array<InputComponent | TextAreaComponent> | InputComponent | TextAreaComponent;
   loading?: boolean;
   level?: 'l0' | 'l1' | 'l2' | 'l3';
-  // if dialog contains non button content otherwise pass in buttom group item and auto-layout
+  // if dialog contains non button content otherwise pass in button group item and auto-layout
   customContent?: boolean;
   isMobile?: boolean;
   disableOffClick?: boolean;
