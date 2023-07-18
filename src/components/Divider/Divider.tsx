@@ -4,13 +4,12 @@ import styled from 'styled-components';
 import { ThemeMode } from '../../types';
 import { getThemedColor } from '../../utils/colorUtils';
 
-import { DIVIDER_COLOR } from './Divider.constants';
 import { DIVIDER_TYPE_CSS } from './Divider.styles';
 import { DividerColor, DividerProps, DividerType } from './Divider.types';
+import { getDividerColor } from './Divider.utils';
 
 const StyledHR = styled.hr<{
-  $active: boolean;
-  $color: DividerColor;
+  $color: DividerColor | string;
   $type: DividerType;
   $forceTheme?: ThemeMode;
   $height?: number | string;
@@ -22,8 +21,8 @@ const StyledHR = styled.hr<{
   border-radius: 100px;
 
   ${(props) => {
-    const dividerColor = props.$active ? '--border-active' : DIVIDER_COLOR[props.$color];
-    const themedColor = getThemedColor(`var(${dividerColor})`, props.$forceTheme);
+    const dividerColor = getDividerColor(props.$color);
+    const themedColor = getThemedColor(dividerColor, props.$forceTheme);
     return `
       color: ${themedColor};
       background: ${themedColor};
@@ -34,14 +33,19 @@ const StyledHR = styled.hr<{
 `;
 
 const Divider: React.FC<DividerProps> = ({
-  active = false,
   color = 'secondary',
   forceTheme,
   height,
   type = DividerType.HORIZONTAL,
   width
 }) => (
-  <StyledHR $active={active} $color={color} $forceTheme={forceTheme} $height={height} $type={type} $width={width} />
+  <StyledHR
+    $color={color}
+    $forceTheme={forceTheme}
+    $height={height}
+    $type={type}
+    $width={width}
+  />
 );
 
 export default Divider;
