@@ -19,10 +19,8 @@ export interface InputFieldProps {
   dataTest?: string;
   /** Disable editing */
   disabled?: boolean;
-  /** Error state */
-  error?: boolean;
-  /** Error message */
-  errorMsg?: string;
+  /** Error state / message */
+  error?: boolean | string;
   /** Override theme */
   forceTheme?: ThemeMode;
   /**

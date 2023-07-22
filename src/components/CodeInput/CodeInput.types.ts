@@ -16,11 +16,8 @@ export type CodeInputProps = {
   onSubmit: () => Promise<void> | void;
   /** Indicator for e2e tests */
   dataTest?: string;
-  /**
-   * Submit error message
-   * Undefined indicates that there is no error
-   */
-  errorMsg?: string;
+  /** Error state / message */
+  error?: boolean | string;
   /** Forced theme mode */
   forceTheme?: ThemeMode;
   /** Controlled loading value */

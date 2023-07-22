@@ -53,7 +53,6 @@ const TextArea = (
     dataTest,
     disabled = false,
     error,
-    errorMsg,
     forceTheme,
     ghost = false,
     helperText,
@@ -118,7 +117,7 @@ const TextArea = (
           readOnly={readOnly}
           $active={!!active}
           $dynamicHeight={dynamicHeight}
-          $error={!!error || !!errorMsg}
+          $error={!!error}
           $size={size}
           $startIconExists={!!icon}
           $ghost={ghost}
@@ -128,7 +127,9 @@ const TextArea = (
           $borderRadius={borderRadius}
         />
       </TextAreaContainer>
-      <SubText errorMsg={errorMsg} helperText={helperText} size={size} forceTheme={forceTheme} />
+      {typeof error === 'string' && (
+        <SubText errorMsg={error} helperText={helperText} size={size} forceTheme={forceTheme} />
+      )}
     </Wrapper>
   );
 };

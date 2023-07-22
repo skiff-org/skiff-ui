@@ -74,7 +74,6 @@ const InputField = (
     disabled = false,
     endAdornment,
     error,
-    errorMsg,
     forceTheme,
     ghost = false,
     helperText,
@@ -139,7 +138,7 @@ const InputField = (
           $paddingRight={paddingRight}
           readOnly={readOnly}
           $active={!!active}
-          $error={!!error || !!errorMsg}
+          $error={!!error}
           $size={size}
           $ghost={ghost}
           $forceTheme={forceTheme}
@@ -156,7 +155,9 @@ const InputField = (
           </EndAdornment>
         )}
       </InputFieldContainer>
-      <SubText errorMsg={errorMsg} helperText={helperText} size={size} forceTheme={forceTheme} />
+      {typeof error === 'string' && (
+        <SubText errorMsg={error} helperText={helperText} size={size} forceTheme={forceTheme} />
+      )}
     </Wrapper>
   );
 };
