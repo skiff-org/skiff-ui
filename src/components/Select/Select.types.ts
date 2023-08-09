@@ -17,11 +17,6 @@ export interface SelectProps {
   ghostColor?: Color;
   /** Max dropdown height */
   maxHeight?: number | string;
-  /** For a controlled Select component */
-  menuControls?: {
-    isOpen: boolean;
-    setIsOpen: (isOpen: boolean) => void;
-  };
   /** Field placeholder text */
   placeholder?: string;
   /** Select size */
