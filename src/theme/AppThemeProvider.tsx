@@ -1,5 +1,5 @@
 import noop from 'lodash/noop';
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, { PropsWithChildren, createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { LocalStorageThemeMode, StorageOnlyThemeMode, ThemeMode } from 'src/types';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
@@ -38,7 +38,7 @@ const GlobalStyles = createGlobalStyle`
     font-smoothing: antialiased;
   }
 `;
-export const AppThemeProvider: React.FC = ({ children }) => {
+export const AppThemeProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const [themeName, setThemeName] = useState<ThemeMode>(ThemeMode.DARK);
   const [storedThemeState, setStoredThemeState] = useState<LocalStorageThemeMode>(StorageOnlyThemeMode.SYSTEM);
 

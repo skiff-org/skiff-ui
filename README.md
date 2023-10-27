@@ -46,19 +46,19 @@ Integrate Skiff components into your project easily, as shown below:
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/button-example-rfp4jn)
 
 
-## ThemeProvider
-To display Skiff UI components correctly, add the ThemeProvider at the root of your app.
+## AppThemeProvider
+To display Skiff UI components correctly, add the AppThemeProvider at the root of your app.
 
 
 ```typescript
   import * as React from 'react';
-  import { ThemeProvider } from '@skiff-org/skiff-ui';
+  import { AppThemeProvider } from '@skiff-org/skiff-ui';
 
   function App({ Component }) {
     return (
-      <ThemeProvider>
+      <AppThemeProvider>
         <Component />
-      </ThemeProvider>
+      </AppThemeProvider>
     );
   }
 ```
