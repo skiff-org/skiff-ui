@@ -32,8 +32,13 @@ export const useTheme = () => useContext(ThemeContext);
 export const THEME_LOCAL_STORAGE_KEY = 'THEME_MODE';
 
 const GlobalStyles = createGlobalStyle`
+  :root {
+    --font-mono: Skiff Mono, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-sans: Skiff Sans Text, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
   body {
-    font-family: 'Skiff Sans Text', sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
   }

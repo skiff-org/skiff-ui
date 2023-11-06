@@ -31,7 +31,7 @@ const TooltipWrap = styled(motion.div)<{ $stateX: number | null; $stateY: number
   border-radius: 8px;
   pointer-events: none;
   z-index: 9999999999;
-  font-family: 'Skiff Sans Text', sans-serif !important;
+  font-family: var(--font-sans) !important;
   font-weight: 470;
   -webkit-font-smoothing: antialiased !important;
   font-size: 11px !important;

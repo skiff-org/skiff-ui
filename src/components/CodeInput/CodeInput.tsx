@@ -38,7 +38,7 @@ const CodeInputField = styled.input<{
   }}
 
   // H4 text
-  font-family: 'Skiff Sans Text', sans-serif;
+  font-family: var(--font-sans);
   font-size: 19px;
   line-height: 130%;
   color: ${(props) => getThemedColor('var(--text-secondary)', props.$forceTheme)};
