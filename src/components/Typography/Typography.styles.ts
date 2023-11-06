@@ -102,8 +102,8 @@ export const TEXT_CSS = css`
       font-weight: ${$weight};
       font-family: ${
         $mono
-          ? "Skiff Mono, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
-          : "Skiff Sans Text, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+          ? "var(--font-mono)"
+          : "var(--font-sans)"
       };
       text-transform: ${$capitalize ? 'capitalize' : $uppercase ? 'uppercase' : ''};
       transition: ${$transition ?? ''};

@@ -124,7 +124,7 @@ export const INPUT_FIELD_CSS = ({
   box-sizing: border-box;
 
   font-weight: ${$weight};
-  font-family: 'Skiff Sans Text', sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 
   caret-color: ${$caretColor ? getThemedColor(ICON_COLOR[$caretColor], $forceTheme) : 'var(--icon-link)'};
